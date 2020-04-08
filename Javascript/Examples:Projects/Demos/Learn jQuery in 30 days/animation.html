@@ -1,0 +1,73 @@
+<!DOCTYPE>
+<head>
+	<title>jQuery Examples</title>
+	<style type="text/css" media="screen">
+    body { background-color: #fff; }
+
+    #content {
+      border-radius: 10px;
+      border: 1px solid grey;
+      background-color: yellow;
+      padding: 10px;
+      width: 300px;
+      position: relative;
+    }
+    
+    button {
+      margin-top: 10px;
+    }
+
+	</style>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	<script>
+	$(function() {
+      var width = parseInt($('#content').width());
+      var height = parseInt($('#content').height());
+      var currentFontSize = parseInt($('#content').css('fontSize'));
+
+      $('button').on('click', function() {
+
+          // $(this).prev().animate({
+          //     'width': (width+=30) + 'px',
+          //     'height': (height+=30) + 'px'
+          // }, 400, 'swing', function() {
+          //     console.log('It completed!');
+          // });
+
+          // $(this).prev().animate({
+          //     'fontSize': (currentFontSize+=2) + 'px'
+          // }, {
+          //     duration: 500,
+          //     complete: function() {
+          //         console.log('It completed!');
+          //     },
+          //     step: function() {
+          //         console.log('The current font size is: ' + $(this).css('fontSize'));
+          //     }
+          // });
+
+          $(this).prev().animate({
+              'fontSize': (currentFontSize+=5) + 'px'
+          }, { duration: 500 })
+                        .animate({'top': $(this).prev().height() + 190 }, {queue: false});
+
+      });
+  });
+	</script>
+
+</head>
+<body>
+
+	 <h1>Animation</h1>
+
+  <div id="content">
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+  
+  </div>
+
+  <button>Sizzer</button>
+
+</body>
+</html>

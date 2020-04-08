@@ -1,0 +1,70 @@
+<!DOCTYPE>
+<head>
+	<title>jQuery Examples</title>
+	<style type="text/css" media="screen">
+		body {
+			width: 500px;
+			margin: 20px auto;
+			text-align: center;
+		}
+
+		dl {
+
+		}
+
+		dt {
+			
+			cursor: pointer;
+			font-weight: bold;
+			font-size: 1.5em;
+			line-height: 2em;
+			background: #e3e3e3;
+			border-bottom: 1px solid #c5c5c5;
+			border-top: 1px solid white;
+		}
+
+		dt:first-child {
+			border-top: none;
+		}
+		dt:last-child {
+			border-bottom: none;
+		}
+
+		dd {
+			margin: 0;
+			padding: 1em 0;
+		}
+
+	</style>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	<script>
+	$(function() {
+		var dd = $('dd');
+		dd.hide();
+		$('dt').on('mouseenter', function(){
+			$(this).next().siblings('dd').slideUp(1000);
+			$(this).next().slideDown(1000);
+		});
+	});
+	</script>
+	
+</head>
+<body>
+	
+	<div id="content">
+
+		<dl>
+			<dt>What is your name?</dt>
+			<dd>My name is Ahmed Alkatheeri</dd>
+			<dt>Programming languages you know are?</dt>
+			<dd>C, Objective-c, Java, Javascript, PHP</dd>
+			<dt>Current Jobs/Doing?</dt>
+			<dd>ZU student, web/ios developer, designer</dd>
+		</dl>
+
+	</div>
+
+	
+</body>
+</html>

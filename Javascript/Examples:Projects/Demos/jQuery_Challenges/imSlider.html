@@ -1,0 +1,132 @@
+<!DOCTYPE>
+<head>
+	<title>Images Slider</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	<script>
+	$(function() {
+
+		var imgList = $('.imSlider .container ul'),
+			oneImg = $('.imSlider .container ul li img'),
+			current = 1,
+			counterElement = $('.imSliderCounter span');
+
+		counterElement.eq(0).addClass('current');
+			
+		var recSlide = setInterval(function() {
+				if (current < oneImg.length) {
+
+					imgList.stop().animate({
+						'left': '-' + parseInt(oneImg.width() * current) + 'px'
+					}, 300);
+					current++;
+				} else {
+					current = 1;
+					imgList.stop().animate({
+						'left': '0px'
+					}, 300);
+				}
+
+				counterElement.removeClass('current');
+				counterElement.eq(current-1).addClass('current');
+				
+			}, 2000);
+
+		
+		counterElement.on('click', function() {
+
+			clearInterval(recSlide);
+			var $this = $(this);
+			
+			counterElement.removeClass('current');
+			$this.addClass('current');
+
+			
+			imgList.stop().animate({
+				'left': '-' + parseInt(oneImg.width() * $this.index()) + 'px'
+			});
+
+		});
+
+	});
+	</script>
+	<style type="text/css" media="screen">
+
+		.imSlider {
+			margin: 10px auto;
+			padding: 5px;
+			background-color: #D5D9DE;
+			width: 300px;
+		}
+
+		.imSlider .container {
+			overflow: hidden;
+			height: 300px;
+		}
+
+		.imSlider ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			width: 900px;
+			position: relative;
+		}
+
+		.imSlider ul li {
+			float: left;
+		}
+
+		.imSlider ul li img {
+			width: 300px;
+		}
+
+		.imSliderCounter {
+			text-align: center;
+		}
+
+		.imSliderCounter span {
+			margin-right: 5px;
+			background-color: #BFBBBD;
+			display: inline-block;
+			width: 15px;
+			height: 15px;
+			box-shadow: inset 0 0 10px #454143;
+			text-indent: -9999px;
+			border-radius: 15px;
+			cursor: pointer;
+		}
+
+		.imSliderCounter span.current {
+			background-color: #DE6474;
+			box-shadow: inset 0 0 10px #633D42;
+		}
+
+	</style>
+</head>
+<body>
+	
+	<div class="imSlider">
+
+		<div class="container">
+			<ul>
+
+				<li><img src="http://distilleryimage1.s3.amazonaws.com/ba4b54283e2411e2b85522000a9e28f2_7.jpg" alt="" /></li>
+
+				<li><img src="http://distilleryimage1.s3.amazonaws.com/82b199d247c011e2bcaf22000a1fbcb3_7.jpg" alt="" /></li>
+
+				<li><img src="http://distilleryimage10.s3.amazonaws.com/a9124d348f4011e2b23122000a1f98cf_7.jpg" alt="" /></li>
+
+			</ul>
+		</div>
+
+	</div>
+
+	<div class="imSliderCounter">
+		<span>1</span>
+		<span>2</span>
+		<span>3</span>
+	</div>
+
+	
+</body>
+</html>

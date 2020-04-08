@@ -1,0 +1,85 @@
+<!DOCTYPE>
+<head>
+	<title>Images Slider</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	<script type="text/javascript" src="jquery.imgSlider.js"></script>
+	<script>
+	$(function() {
+		$('#instaImages').imgSlider();
+	});
+	</script>
+	<style type="text/css" media="screen">
+
+		#instaImages { margin: 0 auto; width: 300px;}
+
+		#instaImages ul li img {
+			width: 300px;
+		}
+
+		.imgSlider {
+			margin: 10px auto !important;
+			padding: 5px;
+			background-color: #D5D9DE;
+			width: 300px;
+		}
+
+		.imgSlider .container {
+			overflow: hidden;
+			height: 300px;
+		}
+
+		.imgSlider ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			width: 900px;
+			position: relative;
+		}
+
+		.imgSlider ul li {
+			float: left;
+		}
+
+		.imgSliderCounter {
+			text-align: center;
+		}
+
+		.imgSliderCounter span {
+			margin-right: 5px;
+			background-color: #BFBBBD;
+			display: inline-block;
+			width: 15px;
+			height: 15px;
+			box-shadow: inset 0 0 10px #454143;
+			text-indent: -9999px;
+			border-radius: 15px;
+			cursor: pointer;
+		}
+
+		.imgSliderCounter span.current {
+			background-color: #DE6474;
+			box-shadow: inset 0 0 10px #633D42;
+		}
+
+	</style>
+</head>
+<body>
+	
+	<div id="instaImages">
+
+			<ul>
+
+				<li><img src="http://distilleryimage1.s3.amazonaws.com/ba4b54283e2411e2b85522000a9e28f2_7.jpg" alt="" /></li>
+
+				<li><img src="http://distilleryimage1.s3.amazonaws.com/82b199d247c011e2bcaf22000a1fbcb3_7.jpg" alt="" /></li>
+
+				<li><img src="http://distilleryimage10.s3.amazonaws.com/a9124d348f4011e2b23122000a1f98cf_7.jpg" alt="" /></li>
+
+			</ul>
+
+	</div>
+
+	
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE>
+<head>
+	<title>Learn jQuery in 30 days</title>
+	
+	<style type="text/css" media="screen">
+		
+
+		ul.list li {
+			color: green;
+		}
+
+		ul.list > li {
+			color: blue;
+		}
+
+		#nav {
+			background-color: grey;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			padding: 5px;
+		}
+
+		#content {
+			margin-top: 30px;
+		}
+		
+
+	</style>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+	<script>
+
+		// Using access html elements in long form
+		//jQuery('ul li').addClass('emphasis');
+
+		// Using access html elements using $ symbol
+		//$('ul li').addClass('emphasis');
+		
+		// Using document ready method
+		/* $(document).ready(function(){
+			
+		}); */
+	
+		// Using $ local function (Shortcut of document.ready () function)
+		/* $(function(){
+			$('li:first-child').addClass('emphasis');
+		}); */
+
+		$(function() {
+			//$("ul.emphasis").children('li').addClass("child");
+			//$("ul.emphasis").find('li').css('color','grey');
+			//$("ul.list").find("li").children().children("li").css("color", "grey").parent().parent().css("color", "yellow");
+			//$('ul.list').find('li:nth-child(Int16Array())').css('fontWeight','bold');
+
+			var body = $('body'), p = $('p'), h = $('h1, h2, h3');
+			$('button').click(function() {
+				$(this).siblings('button').removeAttr('disabled');
+				if($(this).text() == 'Day') {
+					$(this).attr('disabled', 'disabled');
+					body.animate({'backgroundColor': 'yellow'}, 500);
+					p.css('color', 'black');
+					h.css('color', 'black');
+					$('#content > ul').addClass('list');
+				} else if ($(this).text() == 'Night') {
+					$(this).attr('disabled', 'disabled');
+					body.animate({'backgroundColor': 'black'}, 500);
+					p.css('color', 'white');
+					h.css('color', 'white');
+					$('ul.list').removeClass('list').css('color', 'white');
+				}
+			});
+			
+		});
+
+
+	</script>
+</head>
+<body>
+
+	<div id="nav">
+		<button>Day</button>
+		<button>Night</button>
+	</div>
+	
+	<div id="content">
+
+		<h1>Welcome to My Website</h1>
+
+		<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+
+		<ul class="list">
+			<li>Hello</li>
+			<li>Hello 2</li>
+			<li>Hello 3
+				<ul>
+					<li>hello from nest!</li>
+				<ul>
+			</li>
+		</ul>
+
+	</div>
+
+	
+
+
+</body>
+</html>

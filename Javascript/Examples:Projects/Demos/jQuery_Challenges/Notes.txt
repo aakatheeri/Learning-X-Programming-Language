@@ -1,0 +1,16 @@
+// jQuery plugin
+// Animator Project: create new effect that using .animate method for changing colors every anon seconds like
+
+$(element).repeat(colors, seconds, stopAt);
+$(element).repeat(['red', 'blue', 'yellow'], 1000, 10000);
+
+[Finished]
+
+// Image Slider (without plugin)
+
+// Image Slider (plugin)
+// When user click on any counter item, the interval will stop
+$(element).imgSlider(dicular, stay-duration, animate-duration, easing);
+
+[Finished]
+

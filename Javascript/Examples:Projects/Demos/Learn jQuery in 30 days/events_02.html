@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<head>
+	<title>jQuery Examples</title>
+	<style type="text/css" media="screen">
+    body { background-color: #fff; }
+	</style>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	<script>
+	$(function() {
+    $('h2').click(function() {
+      $(this).clone().appendTo(document.body);
+      console.log('Clicked');
+    });
+  });
+	</script>
+
+</head>
+<body>
+
+	<h2>Headingline 2</h2>
+
+  <h3>Headingline 3</h3>
+
+  <div class="box">
+
+    <p>This is a box</p>
+
+  </div>
+
+  <div class="textfield">
+
+    <input value="250120100" type="text" />
+
+  </div>
+
+
+</body>
+</html>

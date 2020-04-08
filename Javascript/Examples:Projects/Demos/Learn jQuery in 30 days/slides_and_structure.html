@@ -1,0 +1,171 @@
+<!DOCTYPE>
+<head>
+	<title>jQuery Examples</title>
+	<style type="text/css" media="screen">
+    body { background-color: #fff; }
+
+    #container {
+      margin: 0 auto;
+      width: 600px;
+    }
+
+    article p {
+      font-family: Heltavica, sans-serif;
+      line-height: 24px;
+    }
+
+    #contact {
+      background-color: #e5e5e5;
+      padding: 0 20px;
+      border-top: 1px solid #3f3f3f;
+      border-bottom: 1px solid #3f3f3f;
+    }
+
+    #contact h2 {
+
+    }
+
+    #contact ul {
+      padding: 0;
+    }
+
+    #contact ul li {
+      list-style: none;
+      padding-bottom: 10px;
+    }
+
+    #contact ul li label {
+      display: block;
+    }
+
+    #contact ul li input#name, #contact ul li input#email {
+      border: 0 none;
+      border-top: 1px solid #3f3f3f;
+    }
+
+    #contact ul li input#name, #contact ul li input#email, #contact ul li textarea {
+      padding: 5px;
+      width: 300px;
+    }
+
+    .js #contact {
+      position: absolute;
+      top: 0;
+      width: inherit;
+      display: none;
+    }
+
+    .close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        font-weight: bold;
+        font-family: sans-serif;
+        cursor: pointer;
+    }
+
+	</style>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	<script>
+	$(function() {
+
+    $('html').addClass('js');
+
+    var contactForm = {
+        container: $('#contact'),
+
+        config: {
+          effect: 'slideToggle',
+          speed: 500
+        },
+
+        init: function(config) {
+          $.extend(this.config, config);
+          $('<button></button>', {
+            text: 'Contact Me'
+          })
+              .insertAfter('article:first')
+              .on('click', this.show)
+        },
+
+        show: function() {
+          // this = button
+          var cf = contactForm, 
+              container = cf.container,
+              config = cf.config
+          
+          if (container.is(':hidden')) {
+              cf.close.call(container);
+              container[config.effect](config.speed);
+          }
+        },
+
+        close: function() {
+          // this = #contact
+          var $this = $(this); // #contact
+
+          if ($this.find('span.close').length ) return;
+
+          $('<span class="close">X</span>')
+              .prependTo($this)
+              .on('click', function() {
+                  // this = span
+                  $this[contactForm.config.effect](contactForm.config.speed);
+              })
+          
+         
+        }
+    }
+
+    contactForm.init({
+        effect: 'fadeToggle',
+        speed: 300
+    });
+    
+  });
+	</script>
+
+</head>
+<body>
+
+<div id="container">
+    <article class="my-article">
+
+      <h1>Psst! Smashing Magazine Is Hiring! We’re Looking For A Senior Editor</h1>
+
+      <p>Editorial work at Smashing Magazine is a difficult, challenging process. It requires patience, focus and thoroughness. Our readers have high expectations, and our authors expect sophisticated editorial guidance. That’s what we are known for, and that’s where we could use your help. We’re looking for a hard-working editor with technical experience to support and complement our team.</p>
+
+      <p>Such an editor can’t be found on any of the innumerable job boards out there. Because the position is one of the most important to our publication, we are looking for the best editor from our community — someone who truly understands Smashing Magazine and what it stands for. We would never otherwise publish a job opening on our front page — in this case, we made an exception.</p>
+    </article>
+
+    <div id="contact">
+        <h2>Contact Me</h2>
+
+        <form action="#">
+          <ul>
+              <li>
+                <label for="name">Name: </label>
+                <input name="name" id="name">
+              </li>
+
+              <li>
+                <label for="email">Email Address: </label>
+                <input name="email" id="email">
+              </li>
+
+              <li>
+                <label for="name">What's Up?</label>
+                <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+              </li>
+
+              <li>
+                <input type="submit" value="Submit">
+              </li>
+          </ul>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

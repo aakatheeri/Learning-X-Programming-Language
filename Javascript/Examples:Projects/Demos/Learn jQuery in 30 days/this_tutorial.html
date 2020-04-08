@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>The this Keyword</title>
+</head>
+<body>
+
+	<a href="http://mubde3.net">Click Me</a>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script>
+
+var obj = {
+	doIt: function(e) {
+		console.log(this);
+		e.preventDefault();
+	}
+}
+
+$('a').click('click', $.proxy(obj.doIt, obj) );
+
+</script>
+
+</body>
+</html>

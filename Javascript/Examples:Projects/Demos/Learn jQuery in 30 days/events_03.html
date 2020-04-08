@@ -1,0 +1,55 @@
+<!DOCTYPE>
+<head>
+	<title>jQuery Examples</title>
+	<style type="text/css" media="screen">
+    body { background-color: #fff; }
+
+    .box {
+      border-radius: 10px;
+      border: 1px solid grey;
+      background-color: yellow;
+      margin: 10px;
+    }
+	</style>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+	<script>
+	$(function() {
+
+    
+    var list = $('.box ul');
+    var child1 = list.children().eq(2).children().children('li:first-child').clone();
+    list.children('li').eq(0).append('<ul></ul>');
+
+
+    list.children('li').eq(0).children('ul').append(child1);
+    child1.insertBefore(list.children('li').eq(1));
+
+
+
+  });
+	</script>
+
+</head>
+<body>
+
+	<h2>Headingline 2</h2>
+
+  <h3>Headingline 3</h3>
+
+  <div class="box">
+    <ul>
+      <li>First list</li>
+      <li>Second list</li>
+      <li>Third list
+        <ul>
+          <li>child 1 </li>
+          <li>child 2</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+
+</body>
+</html>
