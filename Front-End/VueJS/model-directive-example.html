@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>Example of model directive</title>
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+     <!-- Main Model App -->
+     <div id="main-model-app">
+          <p>
+               {{ message }}
+          </p>
+          <input v-model="message" />
+     </div>
+
+     <!-- Implementation -->
+     <script>
+
+     var mainModelApp = new Vue({
+          el: '#main-model-app',
+          data: {
+               message: 'Hello World!'
+          }
+     })
+
+     </script>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>

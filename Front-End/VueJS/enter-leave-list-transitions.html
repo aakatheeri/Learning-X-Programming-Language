@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <title>Enter and Leave list transitions</title>
+
+     <!-- Vue.js: production version -->
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+     <style type="text/css">
+
+          /* Fade transitions */
+          .fade-enter-active, .fade-leave-active {
+               transition: opacity 0.5s;
+          }
+
+          .fade-enter, .fade-leave-to {
+               opacity: 0;
+          }
+
+          /* Slide transitions */
+          .slide-fade-enter-active {
+               transition: all .3s ease;
+          }
+
+          .slide-fade-leave-active {
+               transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+          }
+
+          .slide-fade-enter, .slide-fade-leave-to {
+               transform: translateX(400px);
+               opacity: 0;
+          }
+
+          /* Bounce transitions */
+          .bounce-enter-active {
+               animation: bounce-in .5s;
+          }
+
+          .bounce-leave-active {
+               animation: bounce-in .5s reverse;
+          }
+
+          @keyframes bounce-in {
+               0% {
+                    transform: scale(0);
+               }
+               50% {
+                    transform: scale(1.5);
+               }
+               100% {
+                    transform: scale(1)
+               }
+          }
+
+          /* Component transitions */
+          .component-fade-enter-active, .component-fade-leave-active {
+               transition: opacity .3s ease;
+          }
+          .component-fade-enter, .component-fade-leave-to {
+               opacity: 0;
+          }
+
+     </style>
+</head>
+<body>
+
+     <h3>Transitioning Single Elements/Components</h3>
+
+     <!-- Transitioning Demo -->
+     <div id="trans-element-app">
+          <button v-on:click="show = !show">
+               Toggle
+          </button>
+
+          <transition name="fade">
+               <p v-if="show">
+                    Hello
+               </p>
+          </transition>
+     </div>
+
+     <h3>CSS Transitions</h3>
+
+     <!-- CSS Transitions Example -->
+     <div id="trans-css-example">
+
+          <button @click="show = !show">
+               Toggle render
+          </button>
+
+          <transition name="slide-fade">
+               <p v-if="show">
+                    Hello
+               </p>
+          </transition>
+     </div>
+
+     <h3>CSS Animations</h3>
+
+     <!-- CSS Animations -->
+     <div id="css-animations-app">
+          <button @click="show = !show">Toggle show</button>
+
+          <transition name="bounce">
+               <p v-if="show">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus.
+               </p>
+          </transition>
+
+     </div>
+
+     <h3>Transitioning between components</h3>
+
+     <!-- Transitioning between components -->
+     <div id="trans-between-components">
+
+          <input type="radio" v-model="view" @click="view = 'v-a'" name="view" value="v-a" />
+          <input type="radio" v-model="view" @click="view = 'v-b'" name="view" value="v-b" />
+
+          <br /> <br />
+
+          <transition name="component-fade" mode="out-in">
+               <component v-bind:is="view"></component>
+          </transition>
+
+     </div>
+
+     <!-- Vue Implementation -->
+     <script>
+
+     var transElementApp = new Vue({
+          el: '#trans-element-app',
+          data: {
+               show: true
+          }
+     });
+
+     var transCSSExample = new Vue({
+          el: '#trans-css-example',
+          data: {
+               show: true
+          }
+     });
+
+     var cssAnimationsApp = new Vue({
+          el: '#css-animations-app',
+          data: {
+               show: true
+          }
+     });
+
+     var transBetweenComponents = new Vue({
+          el: '#trans-between-components',
+          data: {
+               view: 'v-a'
+          },
+          components: {
+               'v-a': {
+                    template: '<div>Component A</div>'
+               },
+               'v-b': {
+                    template: '<div>Component B</div>'
+               }
+          }
+     })
+
+     </script>
+
+     <!-- Liverload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+
+</body>
+</html>

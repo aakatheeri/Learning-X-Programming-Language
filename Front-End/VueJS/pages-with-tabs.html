@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <title>Pages with Tabs</title>
+
+     <!-- Vue.js: production version -->
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+     <div id="tabs-app">
+          <ul>
+               <li><a href="#" v-on:click.prevent="showContent(1)">One</a></li>
+               <li><a href="#" v-on:click.prevent="showContent(2)">Two</a></li>
+               <li><a href="#" v-on:click.prevent="showContent(3)">Three</a></li>
+          </ul>
+
+          <div v-show="currentPage == 1" id="one-page" style="border: 1px solid #000">
+               <p>One Page Content.</p>
+          </div>
+
+          <div v-show="currentPage == 2" id="two-page" style="border: 1px solid #000">
+               <p>Two Page Content.</p>
+          </div>
+
+          <div v-show="currentPage == 3" id="three-page" style="border: 1px solid #000">
+               <p>Three Page Content.</p>
+          </div>
+     </div>
+
+     <!-- Vue Implementation -->
+     <script>
+
+     var tabsApp = new Vue({
+          el: '#tabs-app',
+          data: {
+               currentPage: 1
+          },
+          methods: {
+               showContent: function(numberOfPage) {
+                    this.currentPage = numberOfPage;
+                    console.log('Showing content ' + numberOfPage)
+               }
+          }
+     })
+
+     </script>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <title>List of posts in Tabs</title>
+
+     <!-- Vue.js: production version -->
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+     <!-- Foundation Framework - CSS -->
+     <link type="text/css" rel="stylesheet" href="css/foundation-app.css" />
+
+     <style type="text/css">
+
+     body {
+          background-color: #f6e58d;
+     }
+
+     #posts-app {
+          padding-top: 1rem;
+     }
+
+     #tabs ul {
+          background-color: #535c68; /* Active Link -> #95afc0 */
+     }
+
+     #tabs a {
+          color: white;
+     }
+
+     #tabs > .tabs {
+          border-top: 0;
+          border-left: 0;
+          border-bottom: 0;
+     }
+
+     #tabs > ul {
+          border-top-right-radius: 10px;
+          border-top-left-radius: 10px;
+     }
+     #tabs .tabs-title:first-child > a {
+          border-top-left-radius: 10px;
+     }
+
+     .tabs-title > a:hover, .tabs-title > a:focus, .tabs-title > a.active {
+          background-color: #9cb3d2;
+          color: #130f40 !important;
+     }
+
+     #list-of-posts {
+          border-right: 1px solid grey;
+          background-color: silver;
+          font-size: 0.95rem;
+     }
+
+     #list-of-posts a {
+          color: #130f40;
+     }
+
+     #post-content, #archive {
+          background-color: white;
+          display: block;
+     }
+
+     #list-of-posts, #post-content, #archive {
+          min-height: 200px;
+     }
+
+     /* Border of full tabs menu */
+     #tabs ul, #tabs .tabs {
+          border-top: 1px solid #686de0;
+          border-left: 1px solid #686de0;
+          border-right: 1px solid #686de0;
+     }
+     #posts, #archive {
+          border-top: 1px solid #686de0;
+          border-left: 1px solid #686de0;
+          border-right: 1px solid #686de0;
+          border-bottom: 1px solid #686de0;
+     }
+
+     </style>
+</head>
+<body>
+
+     <div id="posts-app" class="grid-container">
+
+
+          <h2>Example of Tabs Menu</h2>
+
+          <p>
+               This is an example of tabs menu that contains list of posts and its content.
+          </p>
+
+          <div id="tabs" class="grid-x">
+               <!-- Tabs -->
+               <ul class="tabs cell medium-7">
+                    <li class="tabs-title"><a href="#"
+                              v-bind:class="{active: selectedTab == 'posts'}"
+                              v-on:click="switchTab('posts')">Posts</a></li>
+                    <li class="tabs-title"><a href="#"
+                              v-bind:class="{active: selectedTab == 'archive'}"
+                              v-on:click="switchTab('archive')">Archive</a></li>
+               </ul>
+          </div>
+
+          <!-- Posts Content -->
+          <div id="posts" class="grid-y" v-show="selectedTab == 'posts'">
+
+               <div class="grid-x grid-padding-x grid-padding-y">
+
+                    <!-- List of posts -->
+                    <div id="list-of-posts" class="cell medium-3">
+                         <ul>
+                              <li v-for="post in posts">
+                                   <a href="#"
+                                        v-on:click="selectedPost = post">{{ post.title }}</a>
+                              </li>
+                         </ul>
+                    </div>
+
+                    <!-- Content of post -->
+                    <div id="post-content" class="cell medium-9">
+
+                         <content v-if="selectedPost">
+
+                              <h2>{{ selectedPost.title }}</h2>
+
+                              <p>
+                                   {{ selectedPost.content }}
+                              </p>
+
+                         </content>
+
+                         <strong v-else>Select a post on the list.</strong>
+
+                    </div>
+
+               </div> <!-- End of Grid -->
+
+          </div>
+
+          <!-- Archive Content -->
+          <div id="archive" class="grid-y" v-show="selectedTab == 'archive'">
+
+               <div class="grid-x grid-padding-x grid-padding-y">
+
+                    <div class="cell">
+                         <p>
+                              This is the area where posts archived.
+                         </p>
+                    </div>
+
+               </div>
+          </div>
+
+     </div>
+
+     <!-- Vue Implementation -->
+     <script>
+
+     var postsApp = new Vue({
+          el: '#posts-app',
+          data: {
+               posts: [
+                    {
+                         id: 1,
+                         title: 'A mengo story',
+                         content: 'Lorem ipsum dolor sit amet, consectetur adipiscing \
+                                   elit. Nulla tincidunt varius sem sed vestibulum. \
+                                   Sed scelerisque rhoncus nulla.'
+                    },
+                    {
+                         id: 2,
+                         title: 'To finish a lab',
+                         content: 'Curabitur blandit lacus sed metus vulputate, \
+                                   ut finibus erat tempor. Nullam egestas blandit \
+                                   diam in maximus. '
+                    },
+                    {
+                         id: 3,
+                         title: 'Quento manana',
+                         content: 'Cras et augue quis est tincidunt elementum. \
+                                   Nam vulputate tellus sapien, id mattis ex \
+                                   sodales sit amet.'
+                    }
+               ],
+               selectedTab: 'posts',
+               selectedPost: null,
+          },
+          methods: {
+               goToPost: function(postID) {
+                    return this.currentPostID = postID;
+               },
+               switchTab: function(tab_title) {
+                    return this.selectedTab = tab_title;
+               }
+          }
+     })
+
+     </script>
+
+     <!-- Foundation Framework -js -->
+     <script src="js/foundation/app.js"></script>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>

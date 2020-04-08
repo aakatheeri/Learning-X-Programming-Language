@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <title>Binding active class</title>
+
+     <!-- Vue.js: production version -->
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+     <style>
+
+     .hide {
+          display: none;
+     }
+     .active {
+          display: block;
+     }
+     </style>
+</head>
+<body>
+
+     <div id="active-app">
+          <button v-on:click="showMessage">Trigger Message</button>
+
+          <p class="hide" v-bind:class="{active: messageActive}">This is a message</p>
+     </div>
+
+     <!-- Vue Implementation -->
+     <script>
+
+     var activeApp = new Vue({
+          el: '#active-app',
+          data: {
+               messageActive: false
+          },
+          methods: {
+               showMessage: function() {
+                    this.messageActive = !this.messageActive;
+                    console.log('Showing message!');
+               }
+          }
+     });
+
+     </script>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <title>Example of v-for directive</title>
+
+     <!-- Vue.js: production version -->
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+     <h3>Simple v-for</h3>
+
+     <ul id="example-1">
+          <li v-for="item in items" :key="item.message">
+               {{ item.message }}
+          </li>
+     </ul>
+
+     <h3>Item with Index</h3>
+
+     <ul id="example-2">
+          <li v-for="(item, index) in items">
+               {{ parentMessage }} - {{ index }} - {{ item.message}}
+          </li>
+     </ul>
+
+     <h3>Of items</h3>
+
+     <ul id="example-3">
+          <li v-for="item of items">
+               {{ item.message }}
+          </li>
+     </ul>
+
+     <h3>Value in Object</h3>
+
+     <ul id="example-4">
+          <li v-for="value in object">
+               {{ value }}
+          </li>
+     </ul>
+
+     <!-- Vue Implementation -->
+     <script>
+
+     var example1 = new Vue({
+          el: '#example-1',
+          data: {
+               items: [
+                    { message: 'Foo' },
+                    { message: 'Bar'}
+               ]
+          }
+     });
+
+     var example2 = new Vue({
+          el: '#example-2',
+          data: {
+               parentMessage: 'Parent',
+               items: [
+                    { message: 'Foo'},
+                    { message: 'Dar'}
+               ]
+          }
+     });
+
+     var example3 = new Vue({
+          el: '#example-3',
+          data: {
+               items: [
+                    { message: 'Ahmed'},
+                    { message: 'Alkatheeri'}
+               ]
+          }
+     });
+
+     var example4 = new Vue({
+          el: '#example-4',
+          data: {
+               object: {
+                    id: 1,
+                    title: "The dark of Eyes",
+                    publishedDate: "Mar 1980"
+               }
+          }
+     })
+
+     </script>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <title>Form Input Bindings</title>
+
+     <!-- Vue.js: production version -->
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+     <h2>Basic Usage</h2>
+
+     <h3>Text</h3>
+
+     <div id="example-1">
+          <input v-model="message" placeholder="edit me" />
+          <p>Message is: {{ message }}</p>
+     </div>
+
+     <h3>Multiline text</h3>
+
+     <div id="example-2">
+          <span>Multiline message is:</span>
+          <p style="white-space: pre-line;">{{ message }}</p>
+          <br />
+          <textarea v-model="message" placeholder="add multiple lines"></textarea>
+     </div>
+
+     <h3>Checkbox</h3>
+
+     <div id="example-3">
+          <input type="checkbox" id="checkbox" v-model="checked" />
+          <label for="checkbox">{{ checked }}</label>
+     </div>
+
+     <h3>Radio</h3>
+
+     <div id="example-4">
+          <input type="radio" id="one" value="One" v-model="picked" />
+          <label for="one">One</label>
+          <br />
+          <input type="radio" id="two" value="Two" v-model="picked" />
+          <label for="two">Two</label>
+
+          <p>Picked: {{ picked }}</p>
+     </div>
+
+     <h3>Select</h3>
+
+     <div id="example-5">
+          <select v-model="selected">
+               <option disabled value="">Please select one</option>
+               <option>A</option>
+               <option>B</option>
+               <option>C</option>
+          </select>
+
+          <p>Selected: {{ selected }}</p>
+     </div>
+
+
+     <!-- Vue Implementation -->
+     <script>
+
+     var example1 = new Vue({
+          el: '#example-1',
+          data: {
+               message: ''
+          }
+     });
+
+     var example2 = new Vue({
+          el: '#example-2',
+          data: {
+               message: ''
+          }
+     })
+
+     var example3 = new Vue({
+          el: '#example-3',
+          data: {
+               checked: false
+          }
+     })
+
+     var example4 = new Vue({
+          el: '#example-4',
+          data: {
+               picked: null
+          }
+     })
+
+     var example5 = new Vue({
+          el: '#example-5',
+          data: {
+               selected: null
+          }
+     })
+
+     </script>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+
+</body>
+</html>

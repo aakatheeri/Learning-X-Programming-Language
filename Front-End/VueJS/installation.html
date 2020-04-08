@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!-- Vue.js: production version -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>To try Vue.js</title>
+
+
+</head>
+
+<body>
+
+     <h1>Hello World</h1>
+
+     <div id="app">
+          {{ message }}
+     </div>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+
+     <!-- Vue code implementation -->
+     <script>
+          var app = new Vue({
+              el: '#app',
+              data: {
+                   message: 'Hello Vue!'
+              }
+          })
+     </script>
+</body>
+</html>

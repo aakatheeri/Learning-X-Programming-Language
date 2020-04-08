@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <title>Components Basic</title>
+
+     <!-- Vue.js: production version -->
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+
+     <div id="component-demo">
+
+     <h3>Base Example</h3>
+     <button-counter></button-counter>
+
+     <h3> Resuing Components</h3>
+
+     <button-counter></button-counter>
+     <button-counter></button-counter>
+     <button-counter></button-counter>
+
+     <h3>Passing Data to Child Components with Props</h3>
+     <blog-post title="New post added!"></blog-post>
+     <blog-post title="Another Post!"></blog-post>
+
+     </div>
+
+     <!-- Vue Implementation -->
+     <script>
+
+     Vue.component('button-counter', {
+          data: function() {
+               return {
+                    count: 0
+               }
+          },
+          template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+     });
+
+     Vue.component('blog-post', {
+          props: ['title'],
+          template: '<h4>{{ title }}</h4>'
+     });
+
+     new Vue({
+          el: '#component-demo'
+     })
+
+     </script>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>

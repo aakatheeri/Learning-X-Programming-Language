@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <title>Example of v-once directive</title>
+
+     <!-- Vue.js: production version -->
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+</head>
+<body>
+
+     <div id="separateApp">
+
+          <!-- input -->
+          <input v-model="wordToType" placeholder="Write any word .." type="input" />
+
+          <!-- wording result can be changed -->
+          <p>{{ wordToType }}</p>
+
+          <!-- wording result wrote once -->
+          <p v-once> {{ wordToType }} </p>
+
+     </div>
+
+     <!-- Vue Implementation -->
+     <script>
+
+     var separateApp = new Vue({
+          el: '#separateApp',
+          data: {
+               wordToType: 'Any word ..'
+          }
+     });
+
+     </script>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>

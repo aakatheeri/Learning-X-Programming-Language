@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <title>Example of v-html directive</title>
+
+     <!-- Vue.js: production version -->
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+
+     <div id="anotherApp">
+          <p>Using mustaches: {{ rawHtml }}</p>
+          <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+
+     </div>
+
+     <!-- Vue Implementation -->
+     <script>
+     var anotherApp = new Vue({
+          el: '#anotherApp',
+          data: {
+               rawHtml: '<span style="color: red">Alerting Statement!</span>'
+          }
+     });
+     </script>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <title>Filters with tabs</title>
+
+     <!-- Vue.js: production version -->
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+     <div id="exampleApp">
+
+          <!-- in mustaches -->
+          {{ message | capitalize }}
+
+          <!-- in v-bind -->
+          <!-- <div v-bind:id="rawId | formatId"></div> -->
+
+     </div>
+
+     <!-- Vue Implementation -->
+     <script>
+
+     Vue.filter('capitalize', function(value) {
+          if (!value) return ''
+          value = value.toString();
+          return value.toUpperCase();
+     })
+
+     var exampleApp = new Vue({
+          el: '#exampleApp',
+          data: {
+               message: 'hello World'
+          }
+     })
+
+     </script>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+
+</body>
+</html>

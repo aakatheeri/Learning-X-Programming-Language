@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!-- Vue.js: production version -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Vue.js: Bind Element Attributes</title>
+</head>
+
+<body>
+
+     <h1>Bind Element Attributes</h1>
+
+     <div id="app-2">
+          <span v-bind:title="message">
+               Hover your mourse over me for few seconds
+               to see my dynamically bound title!
+          </span>
+     </div>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+
+     <!-- Vue implementation -->
+     <script>
+          var app2 = new Vue({
+               el: '#app-2',
+               data: {
+                    message: 'You loaded this page on ' + new Date().toLocaleString()
+               }
+          })
+     </script>
+</body>
+</html>

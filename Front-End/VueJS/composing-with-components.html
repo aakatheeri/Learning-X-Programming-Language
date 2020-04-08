@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<HTML>
+     <head>
+          <meta charset="utf-8" />
+          <title>Composing with components</title>
+
+          <!-- Vue.js: production version -->
+          <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+     </head>
+
+     <body>
+
+          <div id="comp-app">
+               <ol>
+                    <!-- Create an instance of the todo-item component -->
+                    <todo-item
+                         v-for="item in groceryList"
+                         v-bind:todo="item"
+                         v-bind:key="item.id">
+                    </todo-item>
+               </ol>
+          </div>
+
+          <!-- VUE Implementation -->
+          <script>
+
+          // Define a new component called todo-item
+          Vue.component('todo-item', {
+               props: ['todo'],
+               template: '<li>{{ todo.text }}</li>'
+          })
+
+          var app = new Vue({
+               el: '#comp-app',
+               data: {
+                    groceryList: [
+                         { id: 0, text: 'Vegetables'},
+                         { id: 1, text: 'Cheese'},
+                         { id: 2, text: 'Whatever else humans are supposed to eat'}
+                    ]
+               }
+          })
+
+          </script>
+
+          <!-- Livereload -->
+          <script src="http://localhost:35729/livereload.js"></script>
+     </body>
+</HTML>

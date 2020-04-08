@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>Simple Todo List</title>
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+     <!-- Main container of To Do list app -->
+     <div id="todos-list-app">
+
+          <!-- Add new item form -->
+          <input v-model="newItemField" v-on:keyup.enter="addItem(newItemField)" name="itemName" type="input" placeholder="New item? .." />
+
+          <!-- List of items -->
+          <div>
+               <ul v-if="todos.length > 0">
+                    <li v-for="(todo, index) in todos">
+                         {{ todo.item }} <a href="#" v-on:click.prevent="removeItem(index)">Remove</a>
+                    </li>
+               </ul>
+          </div>
+
+     </div>
+
+     <!-- Implementation -->
+     <script>
+
+
+     var todoListApp = new Vue({
+          el: '#todos-list-app',
+          data: {
+               todos: [
+                    { item: 'Doing workout' },
+                    { item: 'Reading a book' },
+                    { item: 'Working on MarK project' }
+               ],
+               newItemField: null
+          },
+          methods: {
+               removeItem: function(index) {
+                    console.log('Removing (' + this.todos[index].item + ") at index (" + index + ")" );
+                    this.todos.splice(index, 1);
+               },
+               addItem: function(value) {
+                    console.log("Adding new item \"" + value  + "\"");
+                    this.todos.push({item: value, id: this.todos.length+1});
+                    this.newItemField = null;
+
+               }
+          }
+     })
+
+     </script>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+
+</body>
+</html>

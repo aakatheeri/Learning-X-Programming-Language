@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <title>Form Input Binding - Part 2</title>
+
+     <!-- Vue.js: production version -->
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+     <div id="bind-app">
+          <!-- 'picked' is a string "a" when checked -->
+          <input type="radio" v-model="picked" value="a" /> {{ picked }}
+
+          <br />
+
+          <!-- 'toggle' is either true or false -->
+          <input type="checkbox" v-model="toggle" /> {{ toggle }}
+
+          <br />
+
+          <!-- 'selected' is a string "abc" when first option is selected -->
+          <select v-model="selected">
+               <option value="abc">ABC</option>
+          </select>
+
+          <p>You selected: {{ selected }}</p>
+
+          <h4>Lazy model</h4>
+          <!-- lazy model -->
+          <input v-model.lazy="lazyMsg" type="radio" value="abcd" /> {{ lazyMsg }}
+
+          <h4>Trip message</h4>
+          <!-- model.trip -->
+          <input type="text" v-model.trim="trimMsg" placeholder="type something .." />
+          <p>Your Message: {{ trimMsg }}</p>
+     </div>
+
+
+     <!-- Vue Implementation -->
+     <script>
+
+     var bindApp = new Vue({
+          el: '#bind-app',
+          data: {
+               picked: null,
+               toggle: null,
+               selected: null,
+               lazyMsg: null,
+               trimMsg: null
+          }
+     })
+     </script>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+
+</body>
+</html>

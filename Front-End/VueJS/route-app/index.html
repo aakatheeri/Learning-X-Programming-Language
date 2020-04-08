@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>Route App</title>
+
+     <!-- Vue.js: production version -->
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+     <div id="app"></div>
+
+     <!-- Vue Implementation -->
+     <script>
+
+     const NotFound = { template: '<p>Page not found</p>'}
+     const Home = { template: '<p>home page</p>'}
+     const About = { template: '<p>about page</p>'}
+
+     const routes = {
+          '/': Home,
+          '/about': About
+     }
+
+     new Vue ({
+          el: '#app',
+          data: {
+               currentRoute: '/' + window.location.href.split('/')[window.location.href.split('/').length-1]
+          },
+          computed: {
+               ViewComponent() {
+                    console.log(this.currentRoute)
+                    return routes[this.currentRoute] || NotFound
+               }
+          },
+          render (h) {
+               return h(this.ViewComponent)
+          }
+     })
+
+     </script>
+
+</body>
+</html>

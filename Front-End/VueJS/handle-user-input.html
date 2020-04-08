@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>Handling user input</title>
+
+     <!-- Vue.js framework production version -->
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+     <div id="app-5">
+          <p>{{ message }}</p>
+          <button v-on:click="reverseMessage">Reverse Message</button>
+     </div>
+
+     <!-- Implementation -->
+     <script>
+     var app5 = new Vue({
+          el: '#app-5',
+          data: {
+               message: 'Hello World!'
+          },
+          methods: {
+               reverseMessage: function() {
+                    this.message = this.message.split('').reverse().join('');
+               }
+          }
+     })
+     </script>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>

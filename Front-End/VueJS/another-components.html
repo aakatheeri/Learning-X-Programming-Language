@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+     <title>Another components</title>
+
+     <!-- Vue.js: production version -->
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+
+     <div id="anotherApp">
+          <navigation></navigation>
+
+          <contain></contain>
+
+          <end-of-page></end-of-page>
+     </div>
+
+     <!-- Vue Implementation -->
+     <script>
+     Vue.component('navigation', {
+          template: '<nav><a href="#">Home</a> <a href="#">About</a> <a href="#">Contact</a></nav>'
+     })
+
+     Vue.component('contain', {
+          template: '<div id="content"><h1>Hi Everyone!</h1><p>This is an area for the content.</p></div>'
+     })
+
+     Vue.component('end-of-page', {
+          template: '<em>All rights reserved!</em>'
+     })
+
+     anotherApp = new Vue({
+          el:'#anotherApp'
+     })
+     </script>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+
+</body>
+</html>

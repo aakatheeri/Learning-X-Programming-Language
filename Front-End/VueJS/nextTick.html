@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <title>Example of $nextTick to give a promise update of data</title>
+
+     <!-- Vue.js: production version -->
+     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+
+     <div id="updatedApp">
+
+          <h2>Example of data update</h2>
+
+          <example></example>
+
+     </div>
+
+     <script>
+
+     Vue.component('example', {
+          template: '<p @click="updateMessage()">{{ message }}</p>',
+          data: function() {
+               return {
+                    message: 'not updated'
+               }
+          },
+          methods: {
+               updateMessage: function() {
+                    this.message = 'updated'
+                    console.log(this.$el.textContent)
+
+                    this.$nextTick(function(){
+                         console.log(this.$el.textContent)
+                    })
+               }
+          }
+     });
+
+     new Vue({
+          el: '#updatedApp'
+     })
+
+     </script>
+
+     <!-- Livereload -->
+     <script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>
