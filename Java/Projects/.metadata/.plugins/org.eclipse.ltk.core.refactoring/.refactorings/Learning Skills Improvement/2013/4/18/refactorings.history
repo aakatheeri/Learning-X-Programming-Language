@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Electronic_Tutor_System_Project.SelectQuizView&apos; to &apos;SelectQuiz1View&apos;&#x0A;- Original project: &apos;Learning Skills Improvement&apos;&#x0A;- Original element: &apos;Electronic_Tutor_System_Project.SelectQuizView&apos;&#x0A;- Renamed element: &apos;Electronic_Tutor_System_Project.SelectQuiz1View&apos;&#x0A;- Update references to refactored element&#x0A;- Rename similarly named elements&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;SelectQuizView&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;Electronic_Tutor_System_Project{SelectQuizView.java[SelectQuizView" matchStrategy="1" name="SelectQuiz1View" qualified="false" references="true" similarDeclarations="true" stamp="1367261080095" textual="false" version="1.0"/>
+</session>

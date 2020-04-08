@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Electronic_Tutor_System_Project.AboutPane&apos; to &apos;AboutView&apos;&#x0A;- Original project: &apos;Learning Skills Improvement&apos;&#x0A;- Original element: &apos;Electronic_Tutor_System_Project.AboutPane&apos;&#x0A;- Renamed element: &apos;Electronic_Tutor_System_Project.AboutView&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;AboutPane&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;Electronic_Tutor_System_Project{AboutPane.java[AboutPane" matchStrategy="1" name="AboutView" qualified="false" references="true" similarDeclarations="false" stamp="1365823789445" textual="false" version="1.0"/>
+</session>

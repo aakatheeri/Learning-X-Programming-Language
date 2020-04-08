@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Exercises.Checkbox_assignment&apos; to &apos;Checkboxes_assignment&apos;&#x0A;- Original project: &apos;CIT320&apos;&#x0A;- Original element: &apos;Exercises.Checkbox_assignment&apos;&#x0A;- Renamed element: &apos;Exercises.Checkboxes_assignment&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Checkbox_assignment&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;Exercises{Checkbox_assignment.java[Checkbox_assignment" matchStrategy="1" name="Checkboxes_assignment" qualified="false" references="true" similarDeclarations="false" stamp="1365653225644" textual="false" version="1.0"/>
+</session>

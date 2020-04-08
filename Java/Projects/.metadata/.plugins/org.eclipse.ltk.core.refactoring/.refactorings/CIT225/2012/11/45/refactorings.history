@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;AddActions&apos; to &apos;PrintWithoutInput&apos;&#x0A;- Original project: &apos;CIT225&apos;&#x0A;- Original element: &apos;AddActions&apos;&#x0A;- Renamed element: &apos;PrintWithoutInput&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;AddActions&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{AddActions.java[AddActions" matchStrategy="1" name="PrintWithoutInput" qualified="false" references="true" similarDeclarations="false" stamp="1352081391744" textual="false" version="1.0"/>
+</session>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;Exercises.JTextField_assignment.java&apos; to &apos;ColorTextField_2013.java&apos;&#x0A;- Original project: &apos;CIT320&apos;&#x0A;- Original element: &apos;Exercises.JTextField_assignment.java&apos;&#x0A;- Renamed element: &apos;Exercises.ColorTextField_2013.java&apos;" description="Rename compilation unit &apos;JTextField_assignment.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;Exercises{JTextField_assignment.java" name="ColorTextField_2013.java" references="false" stamp="1365993473311" version="1.0"/>
+</session>
