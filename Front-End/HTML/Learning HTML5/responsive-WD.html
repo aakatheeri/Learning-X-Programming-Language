@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Web Design</title>
+
+  <style>
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      padding: 3vw;
+    }
+
+    h1 {
+      font-size: 8vw;
+    }
+
+    p {
+      font-size: 5vw;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    #foot_summary {
+      margin-top: 1vw;
+      overflow: hidden;
+      background-color: #f9f9f9;
+      border-top: 0.5vw solid grey;
+      border-bottom: 0.5vw solid grey;
+    }
+
+    #foot_summary .quote {
+      margin-top: 2vw;
+      margin-bottom: 2vw;
+      margin-right: 5.5%;
+      background-color: #f9f9f9;
+      width: 100%;
+      border: 0;
+    }
+
+    #foot_summary .quote p {
+      margin: 0;
+      padding: 2vw;
+      font-size: 4vw;
+    }
+
+    /* @media screen and (max-width: 1000px) {
+      #foot_summary .quote {
+        width: 98%; /* with border width consideration */ /*
+        margin-right: 0;
+      }
+    } */
+
+    @media screen and (min-width: 1000px) {
+
+      #foot_summary {
+        background-color: white;
+        border: 0;
+      }
+
+      #foot_summary .quote {
+        float: left;
+        width: 45%;
+        background-color: yellow;
+        border: 1vw solid black;
+      }
+
+      #foot_summary .quote:last-child {
+        margin-right: 0 !important;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>To your mobile device!</h1>
+
+  <p>veniam esse tamen nulla cillum export fugiat culpa multos irure dolor duis magna
+    nulla noster malis nulla tamen cillum quis aliqua esse magna aliqua export quis
+    noster fugiat legam enim.</p>
+
+  <img src="https://cdn.mos.cms.futurecdn.net/mxEPxwDyfoqHE5cCQCeFYT.jpg" alt="Human" />
+
+  <div id="foot_summary">
+
+    <div class="quote">
+      <p>labore multos quorum elit quae anim enim sunt fore cillum</p>
+    </div>
+
+    <div class="quote">
+      <p>enim aliqua irure enim esse elit legam duis enim</p>
+    </div>
+
+  </div>
+
+  <script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>

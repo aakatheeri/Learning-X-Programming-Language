@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting to specific button</title>
+
+  <style type="text/css">
+
+    #direction-area {
+      text-align: center;
+    }
+    #direction-area button {
+      width: 50%;
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+
+</head>
+<body>
+  <h1>Redirect through button</h1>
+
+  <p>
+    Click button below
+  </p>
+
+  <div id="direction-area">
+
+    <form id="redirect-submit" method="post" action="#">
+
+      <!--
+      Parameters: title, firstname, lastname, DOB, email, pnr, ticket_number, origin, destination
+
+      URL: https://prod-19.westeurope.logic.azure.com:443/workflows/63276807346c42d6beca4407eb0d7321/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=x1vXu_mH6_0iNHrq_sIpKEOjJE55PE6lSdSsvxT3_ng
+      -->
+
+      <input type="hidden" name="title" value="Mr" />
+      <input type="hidden" name="firstname" value="Ahmed" />
+      <input type="hidden" name="lastname" value="Alkatheeri" />
+      <input type="hidden" name="DOB" value="29-Mar-1988" />
+      <input type="hidden" name="email" value="aaalkatheeri@etihad.ae" />
+      <input type="hidden" name="pnr" value="PMFRDF" />
+      <input type="hidden" name="ticket_number" value="1029309482308402" />
+      <input type="hidden" name="origin" value="AUH" />
+      <input type="hidden" name="destination" value="LHR" />
+
+      <button>Go</button>
+    </form>
+
+  </div>
+
+  <script src="http://localhost:35729/livereload.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script>
+    $('#redirect-submit').submit(function(event){
+      console.log('Form Submitted!');
+      // event.currentTarget['title'].value
+
+      var submitURL = 'https://prod-19.westeurope.logic.azure.com:443/workflows/63276807346c42d6beca4407eb0d7321/triggers/manual/paths/invoke?api-version=2016-06-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=x1vXu_mH6_0iNHrq_sIpKEOjJE55PE6lSdSsvxT3_ng';
+      var userData = {
+        "title": event.currentTarget['title'].value,
+        "firstname": event.currentTarget['firstname'].value,
+        "lastname": event.currentTarget['lastname'].value,
+        "DOB": event.currentTarget['DOB'].value,
+        "email": event.currentTarget['email'].value,
+        "pnr": event.currentTarget['pnr'].value,
+        "origin": event.currentTarget['origin'].value,
+        "destination": event.currentTarget['destination'].value,
+        "ticket_number": event.currentTarget['ticket_number'].value
+      };
+
+      $.ajax({
+        method: 'POST',
+        url: submitURL,
+        contentType: 'application/json',
+        data: JSON.stringify(userData),
+        success: function(res, status) {
+          console.log("Status: " + status + '\n');
+          console.log("Data sent: " + JSON.stringify(userData))
+        }
+      }).fail(function(jqXHR, textStatus) {
+        console.log("Error: " + textStatus);
+      });
+
+      event.preventDefault();
+    })
+  </script>
+</body>
+</html>

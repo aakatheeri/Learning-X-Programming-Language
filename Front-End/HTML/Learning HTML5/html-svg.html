@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>SVG implementation</title>
+  <style type="text/css">
+    section {
+      margin: 5px 0;
+      padding: 2px;
+      border: 1px solid Grey;
+    }
+  </style>
+</head>
+<body>
+  <!-- Circle -->
+  <section>
+    <svg width="100" height="100">
+        <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+    </svg>
+  </section>
+
+  <!-- Rectangle -->
+  <section>
+    <svg width="400" height="100">
+      <rect width="400" height="100" style="fill: rgb(0, 0, 255); stroke-width: 10; stroke: rgb(0, 0, 0)" />
+    </svg>
+  </section>
+
+  <!-- Rounded Rectangle -->
+  <section>
+    <svg width="400" height="180">
+      <rect x="50" y="20" rx="20" ry="20" width="150" height="150" style="fill: red; stroke-width: 5; stroke: rgb(0, 0, 0)" />
+    </svg>
+  </section>
+
+  <script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>

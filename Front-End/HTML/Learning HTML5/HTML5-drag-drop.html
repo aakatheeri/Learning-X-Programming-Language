@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial scale" />
+  <title>Drag and Drop elements!</title>
+
+  <style type="text/css">
+    #dragSpace {
+      border: 1px solid black;
+      min-height: 200px;
+      margin-bottom: 30px;
+    }
+
+    #content {
+      border: 1px solid grey;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Drop area -->
+  <section id="dragSpace" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+  </section>
+
+  <!-- Image to be dropped -->
+  <section id="content">
+      <img id="img_1" src="how_to_girl_.jpg" width="100%" draggable="true" ondragstart="drag(event)"  />
+  </section>
+
+  <script>
+
+    function drop(ev) {
+      ev.preventDefault();
+      var data = ev.dataTransfer.getData("text");
+      console.log(ev.dataTransfer.getData("text"));
+      ev.target.appendChild(document.getElementById(data));
+    }
+
+    function allowDrop(ev) {
+      ev.preventDefault();
+
+    }
+
+    function drag(ev) {
+      ev.dataTransfer.setData("text", ev.target.id);
+    }
+  </script>
+  <script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Geolocation implementation</title>
+</head>
+<body>
+
+  <h1>Get location of user!</h1>
+
+  <div id="demo">
+    <p>Longitude: <span class="longitude"></span></p>
+    <p>Latitude: <span class="latitude"></span></p>
+  </div>
+
+  <button onclick="getLocation()">Get Location</button>
+
+  <script>
+    var lng = document.getElementsByClassName('longitude')[0];
+    var lat = document.getElementsByClassName('latitude')[0];
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        console.log('Geolocation is available.');
+
+        navigator.geolocation.getCurrentPosition(showPosition);
+
+      } else {
+        document.getElementById('demo').append('<p>Your browser is not supporting Geolocation feature!</p>');
+      }
+    }
+
+    function showPosition(position) {
+      lng.innerHTML = position.coords.longitude;
+      lat.innerHTML = position.coords.latitude;
+    }
+
+  </script>
+
+  <script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>

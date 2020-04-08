@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Reponsive Grid View</title>
+
+  <style type="text/css">
+
+    * {
+      box-sizing: border-box;
+    }
+
+    #content {
+      background-color: yellow;
+    }
+
+    #sidebar {
+      background-color: grey;
+    }
+
+    .col-1 {
+      width: 8.33%
+    }
+
+    .col-2 {
+      width: 16.66%;
+    }
+
+    .col-3 {
+      width: 25%;
+    }
+
+    .col-4 {
+      width: 33.33%;
+    }
+
+    .col-5 {
+      width: 41.66%;
+    }
+
+    .col-6 {
+      width: 50%;
+    }
+
+    .col-7 {
+      width: 58.33%;
+    }
+
+    .col-8 {
+      width: 66.66%;
+    }
+
+    .col-9 {
+      width: 75%;
+    }
+
+    .col-10 {
+      width: 83.33%;
+    }
+
+    .col-11 {
+      width: 91.66%;
+    }
+
+    .col-12 {
+      width: 100%;
+    }
+
+    [class*="col-"] {
+      float: left;
+      padding: 15px;
+      border: 1px solid red;
+    }
+
+    .row:after {
+      content: " ";
+      clear: both;
+      display: table;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Main Content -->
+  <div id="maincontent" class="row">
+
+    <div id="content" class="col-8">
+      <h1>Hello World!</h1>
+
+      <p>An ipsum coniunctione, voluptate velit constias. O fore praesentibus qui nescius
+        anim do incididunt despicationes de aut ab legam illum dolore, expetendis
+        imitarentur si ullamco, aliquip summis singulis, mandaremus fugiat elit an
+        irure, dolor consequat praetermissum, quamquam dolore consequat. Litteris anim
+        aliqua ex tamen, amet laborum ut vidisse</p>
+
+        <p>nescius quem litteris singulis, exvoluptate eu commodo an ea velit imitarentur, ubi sint nam tempor sed ea illum
+        exercitation o export aut fabulas de quid. Laborum in quid possumus, eu export
+        exquisitaque.Iudicem cohaerescant ut commodo. Qui a labore senserit, summis
+        voluptate ex relinqueret, non nisi nostrud ex aliquip enim quae ex malis. Se
+        fabulas sempiternum.</p>
+
+        <p>Consequat tamen tempor nescius quis, nisi senserit te tractavissent ab ex aute
+        do fore eu qui legam tamen id offendit. Nescius qui noster an ex dolor quamquam.
+        Enim ut ea culpa possumus.Sed sunt mandaremus excepteur. Nam export quem summis
+        mandaremus. Et culpa quo labore. Excepteur familiaritatem si arbitror.</p>
+    </div>
+
+    <div id="sidebar" class="col-4">
+      <h2>Links</h2>
+
+      <ul>
+        <li><a href="#">Page 1</a></li>
+        <li><a href="#">Page 2</a></li>
+        <li><a href="#">Page 3</a></li>
+        <li><a href="#">Page 4</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div id="example">
+
+    <h3>Another one</h3>
+  </div>
+
+  <script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>

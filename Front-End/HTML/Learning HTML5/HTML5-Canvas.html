@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<haed>
+  <meta charset="utf-8" />
+  <title>Playing with Canvas</title>
+
+  <style type="text/css">
+    #myCanvas {
+      border: 1px solid #000;
+    }
+  </style>
+</haed>
+<body>
+
+<canvas id="myCanvas" width="300" height="200"></canvas>
+
+<script src="http://localhost:35729/livereload.js"></script>
+<script>
+  // define canvas element and its context (selection)
+  var canvasElement = document.getElementById('myCanvas');
+  var canvasContext = canvasElement.getContext("2d");
+
+  // Drawing a line
+  canvasContext.moveTo(10, 10); // line begins at
+  canvasContext.lineTo(200, 100); // line finishes at
+  canvasContext.stroke(); // implement stroke line
+
+  canvasContext.moveTo(40,50);
+  canvasContext.lineTo(100, 100)
+  canvasContext.stroke();
+
+  // Draw a circle
+  canvasContext.beginPath();
+  canvasContext.arc(95, 50, 10, 0, 2 * Math.PI); // x, y, randuis, circle begins, circle ends
+  //canvasContext.stroke();
+  canvasContext.fillStyle = 'Red';
+  canvasContext.fill();
+
+  // Draw a text
+  canvasContext.font = "30px Arial"; // font attribute
+  canvasContext.fillStyle = "Blue";
+  canvasContext.fillText("Ahmed", 80, 170); // text value, x, y
+  canvasContext.strokeText("Alkatheeri",90 ,140);
+
+</script>
+
+</body>
+</html>

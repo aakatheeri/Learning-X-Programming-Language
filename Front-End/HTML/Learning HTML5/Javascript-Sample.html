@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Implementing Javascript on HTML</title>
+</head>
+<body>
+    <h1>This is how yo implement Javascript on HTML</h1>
+
+    <div id="demo">
+
+    </div>
+
+    <script>
+      document.getElementById("demo").innerHTML = "<p>A Sample appeared here!</p>";
+      document.getElementById("demo").style.padding = "10px";
+      document.getElementById("demo").style.fontSize = "18px";
+      document.getElementById("demo").style.color = "grey";
+      document.getElementById("demo").style.backgroundColor = "yellow";
+    </script>
+    <script src="http://localhost:35729/livereload.js"></script>
+
+    <noscript>
+      Sorry, your browser not support Javascript!
+    </noscript>
+</body>
+</html>

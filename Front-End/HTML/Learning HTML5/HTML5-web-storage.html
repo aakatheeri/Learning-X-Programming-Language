@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Web Storage Implementation</title>
+</head>
+
+<body>
+
+  <h1>Personal Information</h1>
+
+  <p>
+    <strong>Name:</strong> <span id="firstname"></span> <span id="lastname"></span>
+    <strong>Age:</strong> <span id="age"></span>
+  </p>
+
+  <script>
+
+    function createData(firstName, lastName, age) {
+      localStorage.setItem('firstname', firstName);
+      localStorage.setItem('lastname', lastName);
+      localStorage.setItem('age', age);
+    }
+
+    if( typeof(Storage) == undefined) {
+      console.log("Web Storage is not supported on browser.")
+    } else {
+      console.log("Web Storage is supported!")
+    }
+
+    // start of code
+    createData('Ahmed', 'Alkatheeri', 31);
+    document.getElementById('firstname').innerHTML = localStorage.getItem('firstname');
+    document.getElementById('lastname').innerHTML = localStorage.getItem('lastname');
+    document.getElementById('age').innerHTML = localStorage.getItem('age');
+
+  </script>
+  <script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>

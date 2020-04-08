@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Representing Images</title>
+
+  <style type="text/css">
+    html,body {
+      background-color: black;
+    }
+
+    #lacasa-logo {
+        padding-top: 25%;
+        text-align: center;
+    }
+
+    #lacasa-logo img {
+        width: 90%;
+        height: 90%;
+        opacity: 0.5;
+        transition: opacity 1s;
+        -webkit-transition: opacity 1s;
+    }
+
+    #lacasa-logo img:hover {
+      opacity: 1;
+    }
+
+  </style>
+</head>
+<body>
+
+  <p id="lacasa-logo">
+      <img src="lacasa.png" alt="La Casa De Papel" />
+  </p>
+
+  <script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>

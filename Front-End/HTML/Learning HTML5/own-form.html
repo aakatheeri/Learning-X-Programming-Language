@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-utf-8" />
+    <title>My Own Form</title>
+    <style type="text/css">
+        body, html {
+          background-color: #E3F6F5;
+        }
+
+        h2, p {
+          color: #272643;
+          font-family: sans-serif;
+        }
+
+        button {
+          background-color: #2c698d;
+          color: #ffffff;
+        }
+
+        #contact-form fieldset {
+          border-width: 2px;
+          border-style: solid;
+          border-color: #bae8e8;
+        }
+
+        #contact-form p, #contact-form p button {
+          font-size: 17px;
+        }
+        #contact-form p input, #contact-form p textarea, #contact-form p select {
+          font-size: 14px;
+          font-family: sans-serif;
+        }
+
+        #contact-form p input[type=text], #contact-form p input[type=email], #contact-form p textarea, #contact-form p select {
+          width: 300px;
+          border: 1px solid #2c698d;
+        }
+
+        #contact-form p input {
+          /*margin: 30px 0;
+          display: block;*/
+          margin-top: 10px;
+          margin-left: 20px;
+          padding: 7px;
+        }
+
+        #contact-form p textarea, #contact-form p select {
+          margin-top: 10px;
+          padding: 7px;
+        }
+
+        #contact-form p textarea {
+          height: 100px;
+        }
+
+        #contact-form p input:first-of-type {
+          margin-left: 0;
+        }
+
+        #contact-form button {
+          padding: 7px;
+        }
+    </style>
+</head>
+<body>
+
+  <h2>Contact Us</h2>
+
+  <div id="contact-form">
+
+      <form action="#" method="post">
+
+        <fieldset>
+
+          <p>
+            First Name <br />
+            <input type="text" name="firstname" placeholder="Your first name" required />
+          </p>
+          <p>
+            Last Name <br />
+            <input type="text" name="lastname" placeholder="Your last name" required />
+          </p>
+          <p>
+            Email <br />
+            <input type="email" name="email" placeholder="Your email address" />
+          </p>
+          <p>
+            Purpose <br />
+            <select name="purpose">
+              <option  selected>--</option>
+              <option value="business">Business related</option>
+              <option value="hiring">Hiring</option>
+              <option value="other">Other topics</option>
+            </select>
+          </p>
+          <p>
+            Priority <br />
+            <input type="radio" name="priority" value="high" /> High
+            <input type="radio" name="priority" value="medium" /> Meduim
+            <input type="radio" name="priority" value="low" /> Low
+          </p>
+          <p>
+            Message <br />
+            <textarea name="message"></textarea>
+          </p>
+          <p>
+            <button class="button">Submit</button>
+          </p>
+
+          </fieldset>
+      </form>
+
+  </div>
+
+  <script src="http://localhost:35729/livereload.js"></script>
+</body>
+</html>
