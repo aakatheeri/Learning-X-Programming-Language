@@ -1,0 +1,16 @@
+/* Multi line comments are preserved. */
+/* Variables
+============================== */
+/* You can store a CSS value (such as a color) in a variable.
+Use the '$'symbol to create a variable. */
+/*   You can use the variables throughout your stylesheet.
+     Now if you want to change a color, you only haev to make the change once */
+body {
+  background-color: #A3A4FF;
+  color: #51527F;
+  font-family: "Roboto", sans-serif;
+}
+
+/* This is much more maintainable than having to change the color each time it appears throughout your stylesheet. */
+
+/*# sourceMappingURL=variables.css.map */

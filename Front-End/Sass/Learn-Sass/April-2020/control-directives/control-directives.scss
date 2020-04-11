@@ -1,0 +1,72 @@
+/* Control Directives
+================================= */
+
+/* Sass lets you use @if, @else, @for, @while, and @each to control the compilation of your code to CSS. */
+
+/* @if/@else blocks behave exactly as you might expect */
+
+$debug: true !default;
+
+@mixin debugmode {
+     @if $debug {
+          @debug "Debug mode enabled";
+     }
+     @else {
+          display: none;
+     }
+}
+
+.info {
+     @include debugmode;
+}
+
+/* If $debug is set to true, .info is displayed; if it's set to false then .info is not displayed.
+
+Note: @debug will output debugging information to the command line.
+Useful for checking variables while debugging your SCSS. */
+
+.info {
+     display: inline-block;
+}
+
+/* @for is a control loop that iterates through a range of values.
+Particularly useful for setting styles on a collection of items.
+There are two forms, "through" and "to". The former includes the last value, the latter stops at the last value. */
+
+@for $c from 1 to 4 { /* stop before the last value */
+     div:nth-of-type(#{$c}) {
+          left: ($c - 1) * 900 / 3;
+     }
+}
+
+@for $c from 1 through 3 { /* includes the last value */
+     .myclass-#{$c} {
+          color: rgb($c * 255 / 3, $c * 255 / 3, $c * 255 / 3);
+     }
+}
+
+/* @while is very straightforward: */
+
+$columns: 4;
+$column-width: 80px;
+
+@while $columns > 0 {
+     .col-#{$columns} {
+          width: $column-width;
+          left: $column-width * ($columns - 1);
+     }
+     $columns: $columns - 1;
+}
+
+/* @each functions like @for, except using a list instead of ordinal values
+Note: you specify lists just like other variables, with spaces as delimiters. */
+
+$social-links: facebook twitter linkedin reddit;
+
+.social-links {
+     @each $sm in $social-links {
+          .icon-#{$sm} {
+               background-image: url("images/#{$sm}.png");
+          }
+     }
+}
