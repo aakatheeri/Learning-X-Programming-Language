@@ -1,0 +1,28 @@
+/* Extend (Inheritance)
+=============================== */
+
+/* create a variable and mixins which can be used later */
+$secondary-color: black;
+@mixin size($width, $height) {
+     width: $width;
+     height: $height;
+}
+
+/* Extend is a way to share the properties of one selector with another. */
+
+.display {
+     @include size(5em, 5em);
+     border: 5px solid $secondary-color;
+}
+
+.display-success {
+     @extend .display;
+     border-color: #22df56;
+}
+
+/* Extending a CSS statement is preferable to creating a mixin
+     because of the way Sass groups together the classes that all share
+     the same base styling. If this was done with a mixin, the width,
+     height, and border would be duplicated for each statement that
+     called the mixin. While it won't affect your workflow, it will
+     add unnecessary bloat to the files created by the Sass compiler. */

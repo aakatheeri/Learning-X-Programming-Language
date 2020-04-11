@@ -1,0 +1,37 @@
+/* Functions
+=============================== */
+
+/* Sas privides functions that can be used to accomplish a variety of tasks. Consider the following */
+
+/* Functions can be invoked by using their name and passing in the required arguments */
+body {
+     width: round(10.25px);
+}
+
+.footer {
+     background-color: fade_out(#000000, 0.25);
+}
+
+/* You may also define your own functions. 
+     Functions are very similar to mixins. 
+     When trying to choose between a function or a mixin, 
+     remember that mixins are best for generating CSS while 
+     functions are better for logic that might be used 
+     throughout your Sass code. The examples in the 
+     'Math Operators' section are ideal candidates for becoming a reusable function. */
+
+/* This function will take a target size and the parent size and calculate and return the percentage */
+
+@function calculate-percentage($target-size, $parent-size) {
+     @return $target-size / $parent-size * 100%;
+}
+
+$main-content: calculate-percentage(600px, 960px);
+
+.main-content {
+     width: $main-content;
+}
+
+.sidebar {
+     width: calculate-percentage(300px, 960px);
+}

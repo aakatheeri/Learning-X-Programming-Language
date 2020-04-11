@@ -1,7 +1,40 @@
 /* Mixins
 ============================ */
 
+$primary-color: Yellow;
+
 /* If you find you are writing the same code for more than one element, you might want to store that code in a mixin.
 
 Use the '@mixin' directive, plus a name for your mixin */ 
 
+@mixin center {
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+     left: 0;
+     right: 0;
+}
+
+/* You can use the mixin with '@include' and the mixin name */
+
+div {
+     @include center;
+     background-color: $primary-color;
+}
+
+/* You can sue mixins to crete a shorthand propety. */
+
+@mixin size($width, $height) {
+     width: $width;
+     height: $height;
+}
+
+/* Which you can invoke by passing width and height arguments */
+
+.rectangle {
+     @include size(100px, 60px);
+}
+
+.square {
+     @include size(40px, 40px);
+}

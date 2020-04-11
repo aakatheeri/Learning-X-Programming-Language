@@ -1,0 +1,36 @@
+/* Nesting
+================================ */
+
+/* Sass allows you to nest selectors within selectors */
+
+ul {
+     list-style-type: none;
+     margin-top: 2em;
+     
+     li {
+          background-color: #FF0000;
+     }
+}
+
+/* '&' will be replaced by the parent selector. */
+/* You can also nest pseudo-classes. */
+/* Keep in mind that over-nesting will make your code less maintainable.
+Best practices recommend going no more than 3 levels deep when nesting.
+     For example: */
+     
+ul {
+     list-style-type: none;
+     margin-top: 2em;
+     
+     li {
+          background-color: red;
+          
+          &:hover {
+               background-color: blue;
+          }
+          
+          a {
+               color: white;
+          }
+     }
+}

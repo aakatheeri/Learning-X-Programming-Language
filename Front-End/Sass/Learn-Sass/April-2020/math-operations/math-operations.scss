@@ -1,0 +1,28 @@
+/* Math Operations
+============================== */
+
+/* Sass provides the following operators: +, -, *, / and %. These can be useful for calculating values directly in your Sass files instead of using values that you have already calculated by hand. Below is an example of a setting up a simple two column design. */
+
+$content-area: 960px;
+$main-content: 600px;
+$sidebar-content: 300px;
+
+$main-size: $main-content / $content-area * 100%;
+$sidebar-size: $sidebar-content / $content-area * 100%;
+$gutter: 100% - ($main-size + $sidebar-size);
+
+body {
+     width: 100%;
+}
+
+.main-content {
+     width: $main-size;
+}
+
+.sidebar {
+     width: $sidebar-size;
+}
+
+.gutter {
+     width: $gutter;
+}

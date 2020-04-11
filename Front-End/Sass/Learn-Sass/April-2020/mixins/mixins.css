@@ -3,5 +3,26 @@
 /* If you find you are writing the same code for more than one element, you might want to store that code in a mixin.
 
 Use the '@mixin' directive, plus a name for your mixin */
+/* You can use the mixin with '@include' and the mixin name */
+div {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  background-color: Yellow;
+}
+
+/* You can sue mixins to crete a shorthand propety. */
+/* Which you can invoke by passing width and height arguments */
+.rectangle {
+  width: 100px;
+  height: 60px;
+}
+
+.square {
+  width: 40px;
+  height: 40px;
+}
 
 /*# sourceMappingURL=mixins.css.map */

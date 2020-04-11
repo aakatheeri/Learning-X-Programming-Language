@@ -1,0 +1,16 @@
+/* Placeholder Selectors
+================================= */
+/* Placeholders are useful when creating a CSS statement to etend. If you wanted to create a CSS statement that was exclusively used with @extend, you can do so using a placeholder.
+     Placeholders begin with a '%' instead of '.' or '#'. Placeholders will not appear in the compiled CSS. */
+.message-window {
+  font-size: 14px;
+  padding: 10px;
+  color: #000;
+  border-radius: 4px;
+}
+
+.message-window {
+  background-color: #0000ff;
+}
+
+/*# sourceMappingURL=placeholder-selectors.css.map */

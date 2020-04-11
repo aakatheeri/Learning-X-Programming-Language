@@ -1,0 +1,7 @@
+
+/* Consider the following CSS which we will put in a file called _reset.css */
+
+html, body, ul, ol {
+     margin: 0;
+     padding: 0;
+}

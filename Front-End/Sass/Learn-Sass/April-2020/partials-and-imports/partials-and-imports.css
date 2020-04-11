@@ -1,0 +1,23 @@
+/* Partials and Imports
+============================= */
+/* Sass allows you to create partial files.
+     This can help keep your Sass code modularized. 
+     Partial files should begin with an '_' e.g. _reset.css.
+          Partials are not generated into CSS. */
+/* Sass offers @import which can be used to import partials into a file.
+
+This differs from the traditional CSS @import statement which makes another HTTP request to fetch the imported file. 
+
+Sass takes the imported file and combines it with the compiled code. */
+/* Consider the following CSS which we will put in a file called _reset.css */
+html, body, ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 16px;
+  font-family: Helvetica, Arial, Sans-serif;
+}
+
+/*# sourceMappingURL=partials-and-imports.css.map */
