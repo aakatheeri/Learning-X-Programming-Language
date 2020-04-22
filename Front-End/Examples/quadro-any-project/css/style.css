@@ -1,0 +1,30 @@
+/* Constants */
+/* Sass Functions */
+/* Colors variables */
+html, body {
+  background-color: #E7DFDD;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+#header {
+  background-color: #0E0B16;
+}
+
+#logo {
+  color: white;
+}
+#logo h1 {
+  padding-left: 16px;
+  top: 2px;
+  position: relative;
+  font-size: 1.9rem;
+}
+
+#navigation a {
+  color: #c5c1bf;
+}
+
+/*# sourceMappingURL=style.css.map */

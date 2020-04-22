@@ -1,0 +1,57 @@
+
+/* Constants */
+$_IS_DEBUG_MODE: false;
+
+/* Sass Functions */
+
+@function debug_mode($css_value) {
+     @if $_IS_DEBUG_MODE {
+          @return $css_value;
+     } @else {
+          @return null;
+     }
+}
+
+/* Colors variables */
+
+$background-color: #E7DFDD;
+$header-background-color: #0E0B16;
+$logo-text-color: white;
+$nav-link-color: #c5c1bf;
+
+$logo-protofake-color: yellow;
+$nav-protofake-color: gray;
+
+html, body {
+     background-color: $background-color;
+}
+
+body {
+     overflow-x: hidden;
+}
+
+#header {
+     background-color: $header-background-color;
+}
+
+#logo {
+     background-color: debug_mode($logo-protofake-color);
+     color: $logo-text-color;
+     
+     h1 {
+          padding-left: 16px;
+          top: 2px;
+          position: relative;
+          font-size: 1.9rem;
+          // font-size: rem?px?
+          // font-family: 'type of font'
+     }
+}
+
+#navigation {
+     background-color: debug_mode($nav-protofake-color);
+     
+     a {
+          color: $nav-link-color;
+     }
+}
