@@ -1,6 +1,7 @@
 /* Constants */
 /* Sass Functions */
 /* Colors variables */
+/* Main style */
 html, body {
   background-color: #E7DFDD;
 }
@@ -25,6 +26,72 @@ body {
 
 #navigation a {
   color: #c5c1bf;
+}
+
+#intro {
+  min-height: 30rem;
+  background-color: orange;
+}
+
+#services .services-list {
+  padding-top: 6rem;
+  padding-left: 1rem;
+}
+#services .services-list .cell i.step {
+  position: relative;
+  top: -3px;
+}
+
+#qa-testing {
+  min-height: 25rem;
+  background-color: #a4c8ff;
+}
+
+#footer {
+  min-height: 10rem;
+  background-color: black;
+  color: white;
+}
+
+/* Foundation Icons Size Ranges */
+.size-12 {
+  font-size: 12px;
+}
+
+.size-14 {
+  font-size: 14px;
+}
+
+.size-16 {
+  font-size: 16px;
+}
+
+.size-18 {
+  font-size: 18px;
+}
+
+.size-21 {
+  font-size: 21px;
+}
+
+.size-24 {
+  font-size: 24px;
+}
+
+.size-36 {
+  font-size: 36px;
+}
+
+.size-48 {
+  font-size: 48px;
+}
+
+.size-60 {
+  font-size: 60px;
+}
+
+.size-72 {
+  font-size: 72px;
 }
 
 /*# sourceMappingURL=style.css.map */

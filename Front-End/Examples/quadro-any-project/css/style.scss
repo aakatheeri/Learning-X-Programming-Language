@@ -18,9 +18,15 @@ $background-color: #E7DFDD;
 $header-background-color: #0E0B16;
 $logo-text-color: white;
 $nav-link-color: #c5c1bf;
+$footer-text-color: white;
 
 $logo-protofake-color: yellow;
 $nav-protofake-color: gray;
+$intro-background-color: orange;
+$qa-testing-background-color: #a4c8ff;
+$footer-background-color: black;
+
+/* Main style */
 
 html, body {
      background-color: $background-color;
@@ -37,7 +43,7 @@ body {
 #logo {
      background-color: debug_mode($logo-protofake-color);
      color: $logo-text-color;
-     
+
      h1 {
           padding-left: 16px;
           top: 2px;
@@ -50,8 +56,63 @@ body {
 
 #navigation {
      background-color: debug_mode($nav-protofake-color);
-     
+
      a {
           color: $nav-link-color;
      }
 }
+
+#intro {
+     min-height: 30rem;
+     background-color: $intro-background-color;
+}
+
+#services {
+
+     .services-list {
+          padding-top: 6rem;
+          padding-left: 1rem;
+
+          .cell {
+
+               i.step {
+                    position: relative;
+                    top: -3px;
+               }
+          }
+     }
+}
+
+#qa-testing {
+     min-height: 25rem;
+     background-color: $qa-testing-background-color;
+     // find suitable background
+}
+
+#footer {
+     min-height: 10rem;
+     background-color: $footer-background-color;
+     color: $footer-text-color;
+}
+
+/* Foundation Icons Size Ranges */
+
+.size-12 { font-size: 12px; }
+
+.size-14 { font-size: 14px; }
+
+.size-16 { font-size: 16px; }
+
+.size-18 { font-size: 18px; }
+
+.size-21 { font-size: 21px; }
+
+.size-24 { font-size: 24px; }
+
+.size-36 { font-size: 36px; }
+
+.size-48 { font-size: 48px; }
+
+.size-60 { font-size: 60px; }
+
+.size-72 { font-size: 72px; }
