@@ -43,8 +43,13 @@ body {
 }
 
 #qa-testing {
-  min-height: 25rem;
+  min-height: 22rem;
   background-color: #a4c8ff;
+  background-image: url("../img/qa-mobile-pic.png");
+  background-position: bottom right;
+  background-size: 40%;
+  background-repeat: no-repeat;
+  background-blend-mode: luminosity;
 }
 
 #footer {
