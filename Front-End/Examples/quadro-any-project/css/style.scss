@@ -1,3 +1,5 @@
+/* Include Foundation Sass file */
+@import '../../bower_components/foundation-sites/assets/foundation';
 
 /* Constants */
 $_IS_DEBUG_MODE: false;
@@ -14,15 +16,21 @@ $_IS_DEBUG_MODE: false;
 
 /* Colors variables */
 
-$background-color: #E7DFDD;
-$header-background-color: #0E0B16;
+
 $logo-text-color: white;
+$footer-text-color: #adafb3;
 $nav-link-color: #c5c1bf;
-$footer-text-color: white;
+$nav-link-hover-color: #f5f0b7;
+$intro-text-color: white;
+$services-listitem-icon-color: #28a002;
+
 
 $logo-protofake-color: yellow;
 $nav-protofake-color: gray;
-$intro-background-color: orange;
+$background-color: #E7DFDD;
+$header-background-color: #0E0B16;
+$intro-background-color: #191919;
+$intro-join-button-background-color: #1ada5e;
 $qa-testing-background-color: #a4c8ff;
 $footer-background-color: black;
 
@@ -52,33 +60,84 @@ body {
           // font-size: rem?px?
           // font-family: 'type of font'
      }
+
 }
 
 #navigation {
      background-color: debug_mode($nav-protofake-color);
 
+     @include breakpoint(small) {
+          text-align: center;
+          ul {
+               display: inline-flex;
+          }
+     }
+
      a {
           color: $nav-link-color;
+          &:hover, &.active {
+               color: $nav-link-hover-color;
+          }
      }
 }
 
 #intro {
      min-height: 30rem;
      background-color: $intro-background-color;
+     position: relative;
+     overflow: hidden;
+     color: $intro-text-color;
+
+     .cell {
+          z-index: 2;
+     }
+
+     #join-button {
+          background-color: $intro-join-button-background-color;
+          border-radius: 28px;
+          -webkit-order-radius: 28px;
+          -moz-order-radius: 28px;
+          font-weight: bold;
+     }
+
+     #intro-background {
+          background-image: url(../img/neonbrand-_oKSYD2cSIk-unsplash.jpg);
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          filter: blur(10px);
+          -webkit-filter: blur(10px);
+     }
 }
 
 #services {
-
+     padding-bottom: 2rem;
      .services-list {
-          padding-top: 6rem;
           padding-left: 1rem;
 
           .cell {
 
                i.step {
                     position: relative;
-                    top: -3px;
+                    top: -0.2rem;
+                    color: $services-listitem-icon-color;
                }
+          }
+     }
+
+     @include breakpoint(small) {
+          padding-bottom: 0;
+          .services-list {
+               padding-bottom: 0;
+               .cell i.step {
+                    top: 0.8rem;
+               }
+
           }
      }
 }
@@ -92,12 +151,20 @@ body {
      background-size: 40%;
      background-repeat: no-repeat;
      background-blend-mode: luminosity;
+
+     @include breakpoint(small) {
+          min-height: 17rem;
+     }
 }
 
 #footer {
      min-height: 10rem;
      background-color: $footer-background-color;
      color: $footer-text-color;
+
+     @include breakpoint(small) {
+          min-height: 7rem;
+     }
 }
 
 /* Foundation Icons Size Ranges */

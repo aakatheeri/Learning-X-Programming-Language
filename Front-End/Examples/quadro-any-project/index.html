@@ -16,14 +16,14 @@
      <div id="header" class="grid-x grid-padding-x grid-padding-y align-middle">
 
           <!-- Logo -->
-          <div id="logo" class="cell medium-2">
+          <div id="logo" class="cell medium-2 text-center">
                <h1>Quadro</h1>
           </div>
 
           <!-- Navigation -->
           <div id="navigation" class="cell auto">
                <ul class="menu">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="#" class="active">Home</a></li>
                     <li><a href="#">Info</a></li>
                     <li><a href="#">Resources</a></li>
                     <li><a href="#">Blog</a></li>
@@ -36,6 +36,8 @@
 
      <!-- Intro -->
      <div id="intro" class="grid-x grid-padding-x grid-padding-y align-middle">
+
+
 
           <div class="cell medium-2">
                <!-- empty cell -->
@@ -52,7 +54,7 @@
                <br />
 
                <!-- Sign-up button -->
-               <button class="button large">Join now!</button>
+               <button id="join-button" class="button large">Join now!</button>
 
           </div>
 
@@ -60,11 +62,19 @@
                <!-- empty cell -->
           </div>
 
+          <!-- Background Image -->
+          <div id="intro-background"></div>
+
      </div>
      <!-- End:Intro -->
 
      <!-- Services -->
      <div id="services" class="grid-x grid-padding-x grid-padding-y align-middle">
+
+          <div class="cell full text-center">
+               <h2>Services</h2>
+               <p>Our Best Services</p>
+          </div>
 
           <!-- First list of services -->
           <div class="cell medium-4 services-list">
@@ -114,12 +124,10 @@
           <!-- End:First list of services -->
 
           <!-- Services promotion -->
-          <div class="cell medium-4 text-center">
-               <h2>Services</h2>
-               <p>Our Best Services</p>
+          <div class="cell medium-4 text-center hide-for-small-only">
 
                <!-- iPhone Screen image -->
-               <img src="img/Quadro-App--DeviceScreen-TB.png" alt="Quadro-App" />
+               <img class="hide-for-small-only" src="img/Quadro-App--DeviceScreen-TB.png" alt="Quadro-App" />
 
           </div>
           <!-- End:Services promotion -->
@@ -169,7 +177,7 @@
      <!-- QA & Testing -->
      <div id="qa-testing" class="grid-x grid-padding-x grid-padding-y align-middle">
 
-          <div class="cell medium-2">
+          <div class="cell medium-2 hide-for-small-only">
                <!-- Left col for space -->
           </div>
 
@@ -187,7 +195,7 @@
      <!-- Footer -->
      <div id="footer" class="grid-x grid-padding-x grid-padding-y align-middle">
 
-          <div class="cell medium-1 large-2">
+          <div class="cell medium-1 large-2 hide-for-small-only">
 
           </div>
 
@@ -196,7 +204,7 @@
                  <br />Designed by Ahmed Alkatheeri</p>
           </div>
 
-          <div class="cell medium-1 large-2">
+          <div class="cell medium-1 large-2 hide-for-small-only">
 
           </div>
 
