@@ -6404,6 +6404,7 @@ html.is-reveal-open body {
 /* Constants */
 /* Sass Functions */
 /* Colors variables */
+/* Font family types */
 /* Main style */
 html, body {
   background-color: #E7DFDD;
@@ -6424,7 +6425,8 @@ body {
   padding-left: 16px;
   top: 2px;
   position: relative;
-  font-size: 1.9rem;
+  font-size: 2rem;
+  font-family: "Maven Pro", sans-serif;
 }
 
 #navigation {
@@ -6434,6 +6436,7 @@ body {
   display: inline-flex;
 }
 #navigation a {
+  font-family: "Heebo", sans-serif;
   color: #c5c1bf;
 }
 #navigation a:hover, #navigation a.active {
@@ -6447,6 +6450,16 @@ body {
   overflow: hidden;
   color: white;
 }
+#intro h2 {
+  font-family: "Roboto Slab", serif;
+  font-size: 4.5rem;
+  font-weight: 500;
+  font-size: 3.5rem;
+}
+#intro h3 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
 #intro .cell {
   z-index: 2;
 }
@@ -6455,6 +6468,7 @@ body {
   border-radius: 28px;
   -webkit-order-radius: 28px;
   -moz-order-radius: 28px;
+  font-family: "Roboto Slab", serif;
   font-weight: bold;
 }
 #intro #intro-background {
@@ -6475,8 +6489,27 @@ body {
   padding-bottom: 2rem;
   padding-bottom: 0;
 }
+#services h2 {
+  font-family: "Roboto Slab", serif;
+  font-size: 4rem;
+  font-weight: 400;
+  font-size: 3rem;
+}
+#services h3 {
+  font-family: "Roboto Slab", serif;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+#services p.legend {
+  font-family: "Roboto Slab", serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+}
 #services .services-list {
   padding-left: 1rem;
+}
+#services .services-list .cell p {
+  font-family: "Poppins", sans-serif;
 }
 #services .services-list .cell i.step {
   position: relative;
@@ -6500,11 +6533,21 @@ body {
   background-blend-mode: luminosity;
   min-height: 17rem;
 }
+#qa-testing h2 {
+  font-family: "Roboto Slab", serif;
+  font-weight: 500;
+  font-size: 2.5rem;
+}
+#qa-testing p {
+  font-family: "Poppins", sans-serif;
+}
 
 #footer {
   min-height: 10rem;
   background-color: black;
   color: #adafb3;
+  font-size: 0.9rem;
+  font-family: "Heebo", sans-serif;
   min-height: 7rem;
 }
 

@@ -34,6 +34,21 @@ $intro-join-button-background-color: #1ada5e;
 $qa-testing-background-color: #a4c8ff;
 $footer-background-color: black;
 
+/* Font family types */
+
+$logo-font-family: 'Maven Pro', sans-serif;
+$navigation-list-item-font-family: 'Heebo', sans-serif;
+$intro-title-font-family:  'Roboto Slab', serif;
+$intro-description-font-family: 'Open Sans', sans-serif;
+$intro-join-button-font-family: "Roboto Slab", serif;
+$services-main-title-font-family: 'Roboto Slab', serif;
+$services-main-description-font-family:  'Roboto Slab', serif;
+$services-feature-title-font-family: 'Roboto Slab', serif;
+$services-feature-description-font-family: 'Poppins', sans-serif;
+$qa-testing-title-font-family: 'Roboto Slab', serif;
+$qa-testing-description-font-family: 'Poppins', sans-serif;
+$footer-description-font-family: 'Heebo', sans-serif;
+
 /* Main style */
 
 html, body {
@@ -56,9 +71,8 @@ body {
           padding-left: 16px;
           top: 2px;
           position: relative;
-          font-size: 1.9rem;
-          // font-size: rem?px?
-          // font-family: 'type of font'
+          font-size: 2rem;
+          font-family: $logo-font-family;
      }
 
 }
@@ -74,6 +88,7 @@ body {
      }
 
      a {
+          font-family: $navigation-list-item-font-family;
           color: $nav-link-color;
           &:hover, &.active {
                color: $nav-link-hover-color;
@@ -88,6 +103,21 @@ body {
      overflow: hidden;
      color: $intro-text-color;
 
+     h2 {
+          font-family: $intro-title-font-family;
+          font-size: 4.5rem;
+          font-weight: 500;
+
+          @include breakpoint(small) {
+               font-size: 3.5rem;
+          }
+     }
+
+     h3 {
+          font-family: $intro-description-font-family;
+          font-weight: 600;
+     }
+
      .cell {
           z-index: 2;
      }
@@ -97,6 +127,7 @@ body {
           border-radius: 28px;
           -webkit-order-radius: 28px;
           -moz-order-radius: 28px;
+          font-family: $intro-join-button-font-family;
           font-weight: bold;
      }
 
@@ -116,11 +147,39 @@ body {
 }
 
 #services {
+
+     h2 {
+          font-family: $services-main-title-font-family;
+          font-size: 4rem;
+          font-weight: 400;
+
+          @include breakpoint(small) {
+               font-size: 3rem;
+          }
+     }
+
+     h3 {
+          font-family: $services-feature-title-font-family;
+          font-size: 1.8rem;
+          font-weight: 500;
+     }
+
+     p.legend {
+          font-family: $services-main-description-font-family;
+          font-size: 1.6rem;
+          font-weight: 400;
+     }
+
      padding-bottom: 2rem;
+
      .services-list {
           padding-left: 1rem;
 
           .cell {
+
+               p {
+                    font-family: $services-feature-description-font-family;
+               }
 
                i.step {
                     position: relative;
@@ -152,6 +211,16 @@ body {
      background-repeat: no-repeat;
      background-blend-mode: luminosity;
 
+     h2 {
+          font-family: $qa-testing-title-font-family;
+          font-weight: 500;
+          font-size: 2.5rem;
+     }
+
+     p {
+          font-family: $qa-testing-description-font-family;
+     }
+
      @include breakpoint(small) {
           min-height: 17rem;
      }
@@ -161,6 +230,8 @@ body {
      min-height: 10rem;
      background-color: $footer-background-color;
      color: $footer-text-color;
+     font-size: 0.9rem;
+     font-family: $footer-description-font-family;
 
      @include breakpoint(small) {
           min-height: 7rem;
