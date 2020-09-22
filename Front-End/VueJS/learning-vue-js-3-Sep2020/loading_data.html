@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<style>
+     [v-cloak] {
+          display: none;
+     }
+</style>
+
+<div id="app">
+     <div class="container">
+          <img :src="imgSrc" :title="imgTitle" width="100%" />
+          <h3>{{imgTitle}}</h3>
+          <p>{{imgExmplain}}</p>
+     </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+
+     var apiKey = 'UWprkr2fxEciRAFUq238vSq4AXC4fRzX9QL4Eep2';
+     var url = 'https://api.nasa.gov/planetary/apod?api_key=' + apiKey;
+
+     var vm = new Vue({
+          el: '#app',
+          data: {
+               imgSrc: '',
+               imgTitle: '',
+               imgExmplain: ''
+          }
+     })
+
+     axios.get(url)
+          .then(function (res){
+               vm.imgSrc = res.data.url;
+               vm.imgTitle = res.data.title;
+               vm.imgExmplain = res.data.explanation;
+          })
+
+</script>
+
+<!-- Livereload -->
+<script src="http://localhost:35729/livereload.js"></script>
