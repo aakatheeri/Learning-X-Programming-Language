@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<style>
+     [v-cloak] {
+          display: none;
+     }
+</style>
+
+<div id="app">
+     <div class="container">
+          <a-pod></a-pod>
+          <a-pod date="2018-08-07"></a-pod>
+     </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+
+     Vue.component('a-pod', {
+          template: `
+               <div>
+                    <img :src="imgSrc" :title="imgTitle" width="100%" />
+                    <h3>{{ imgTitle }}</h3>
+                    <p><strong>{{ date || "today" }}</strong>: {{ imgExmplain }}</p>
+               </div>
+          `,
+          props: ['date'],
+          data: function() {
+               return {
+                    imgSrc: '',
+                    imgTitle: '',
+                    imgExmplain: ''
+               };
+          },
+          created: function() {
+               this.fetchApod();
+          },
+          methods: {
+               fetchApod: function() {
+
+                    var apiKey = 'UWprkr2fxEciRAFUq238vSq4AXC4fRzX9QL4Eep2';
+                    var url = 'https://api.nasa.gov/planetary/apod?api_key=' + apiKey;
+                    if (this.date) {
+                         url += '&date=' + this.date;
+                    }
+                    var self = this;
+                    axios.get(url)
+                         .then(function (res){
+                              self.imgSrc = res.data.url;
+                              self.imgTitle = res.data.title;
+                              self.imgExmplain = res.data.explanation;
+                         })
+               }
+          }
+     });
+
+     var vm = new Vue({
+          el: '#app',
+
+     });
+
+</script>
+
+<!-- Livereload -->
+<script src="http://localhost:35729/livereload.js"></script>
