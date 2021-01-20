@@ -5,14 +5,12 @@ System.register([], function (exports_1, context_1) {
     return {
         setters: [],
         execute: function () {
-            // START: TodoState
             (function (TodoState) {
-                TodoState[TodoState["New"] = 1] = "New";
-                TodoState[TodoState["Active"] = 2] = "Active";
-                TodoState[TodoState["Complete"] = 3] = "Complete";
-                TodoState[TodoState["Deleted"] = 4] = "Deleted";
+                TodoState[TodoState["Active"] = 1] = "Active";
+                TodoState[TodoState["Complete"] = 2] = "Complete";
             })(TodoState || (TodoState = {}));
             exports_1("TodoState", TodoState);
         }
     };
 });
+//# sourceMappingURL=model.js.map

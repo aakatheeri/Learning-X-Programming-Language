@@ -30,6 +30,9 @@
           - Difference between Internal and External modules
           - Loading internal Module
           - Loading external Module
+     - Generating declaration files in TypeScript
+     - Debugging TypeScript with source maps
+     - Implementing method decorators in TypeScript
 
 */
 

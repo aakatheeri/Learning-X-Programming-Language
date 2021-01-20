@@ -1,6 +1,8 @@
 {
      "compilerOptions": {
           "target": "es5",
-          "module": "system"
+          "declaration": true,
+          "module": "system",
+          "sourceMap": true
      }
 }
