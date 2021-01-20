@@ -1,16 +1,8 @@
-System.register([], function (exports_1, context_1) {
-    "use strict";
-    var TodoState;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [],
-        execute: function () {
-            (function (TodoState) {
-                TodoState[TodoState["Active"] = 1] = "Active";
-                TodoState[TodoState["Complete"] = 2] = "Complete";
-            })(TodoState || (TodoState = {}));
-            exports_1("TodoState", TodoState);
-        }
-    };
-});
-//# sourceMappingURL=model.js.map
+"use strict";
+exports.__esModule = true;
+exports.TodoState = void 0;
+var TodoState;
+(function (TodoState) {
+    TodoState[TodoState["Active"] = 1] = "Active";
+    TodoState[TodoState["Complete"] = 2] = "Complete";
+})(TodoState = exports.TodoState || (exports.TodoState = {}));
