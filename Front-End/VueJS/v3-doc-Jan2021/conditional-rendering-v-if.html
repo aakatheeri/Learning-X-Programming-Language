@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <script src="https://unpkg.com/vue@next"></script>
+     </head>
+     <body>
+
+          <!-- conditional rendering - v-if -->
+          <div id="conditional-rendering">
+               <span v-if="seen">Now you see me</span>
+          </div>
+
+
+          <script>
+
+          const ConditionalRendering = {
+               data() {
+                    return {
+                         seen: true
+                    }
+               }
+          }
+          Vue.createApp(ConditionalRendering).mount('#conditional-rendering');
+
+
+          </script>
+
+     </body>
+</html>

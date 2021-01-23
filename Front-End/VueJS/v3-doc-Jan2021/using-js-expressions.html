@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <script src="https://unpkg.com/vue@next"></script>
+     </head>
+     <body>
+
+          <div id="app">
+
+               {{ number + 1 }}
+
+               {{ ok ? 'Yes' : 'NO '}}
+
+               {{ message.split('').reverse().join('') }}
+
+          </div>
+
+          <script>
+
+          Vue.createApp({
+               data() {
+                    return {
+                         number: 2,
+                         ok: true,
+                         message: 'Hello World!'
+                    }
+               }
+          }).mount('#app');
+
+
+          </script>
+
+     </body>
+</html>

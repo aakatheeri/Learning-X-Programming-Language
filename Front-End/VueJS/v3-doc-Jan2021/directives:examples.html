@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <script src="https://unpkg.com/vue@next"></script>
+     </head>
+     <body>
+
+          <div id="app">
+
+               <h1>Enable a paragraph based on clickable button!</h1>
+
+               <form>
+                    <!-- use .prevent modifier to tell the v-on directive to call event.preventDefault() to prevent update the url -->
+                    <button v-on:click.prevent="toggle">Toggle Paragraph</button>
+               </form>
+
+               <p v-if="seen">
+                    Now you see me. <a v-bind:href="url">Learn more about me!</a>
+               </p>
+
+          </div>
+
+          <script>
+
+          const App = {
+               data() {
+                    return {
+                         seen: false,
+                         url: 'http://ahmed.io'
+                    }
+               },
+               methods: {
+                    toggle() {
+                         this.seen = !this.seen;
+                    }
+               }
+          }
+
+          Vue.createApp(App).mount('#app');
+
+          </script>
+
+     </body>
+</html>
