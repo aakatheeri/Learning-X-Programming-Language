@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <style>
+          [v-cloak] { display: none; }
+          .hidden {
+               display: none;
+          }
+          .active {
+               display: block;
+          }
+          #area {
+               background-color: black;
+               margin: 2rem;
+               width: 90%;
+               min-height: 5rem;
+          }
+          #area::after {
+               content: "open-quote";
+          }
+          </style>
+     </head>
+     <body>
+
+          <div id="app">
+
+               <div id="basic-event">
+                    <button @click="counter += 1">Add 1</button>
+                    <p>
+                         The button above has been clicked {{ counter }} times.
+                    </p>
+               </div>
+
+               <div id="event-with-method">
+                    <!-- `greet` is the name of a method defined below -->
+                    <button @click="greet">Greet</button>
+               </div>
+
+               <div id="inline-handler">
+                    <button @click="say('hi')">Say hi</button> <br />
+                    <button @click="say('what')">Say what</button> <br />
+
+                    <form>
+                         <button @click="warn('Form canno be submitted yet.', $event)">
+                              Submit
+                         </button>
+                    </form>
+               </div>
+
+               <!-- keyboard event handler -->
+               <div id="keyboard-event-handler">
+                    <div id="area" @mousedown.left="showEventDetails('left', $event)" @mousedown.middle="showEventDetails('middle', $event)">
+
+                    </div>
+               </div>
+
+          </div>
+
+          <script src="https://unpkg.com/vue@next"></script>
+          <script>
+
+               Vue.createApp({
+                    data() {
+                         return {
+                              counter: 0
+                         }
+                    }
+               }).mount('#basic-event');
+
+               Vue.createApp({
+                    data() {
+                         return {
+                              name: 'Vue.js'
+                         }
+                    },
+                    methods: {
+                         greet(event) {
+                              // `this` inside methods points to the current active
+                              alert('Hello ' + this.name + '!')
+
+                              if (event) {
+                                   alert(event.target.tagName)
+                              }
+                         }
+                    }
+               }).mount('#event-with-method')
+
+               Vue.createApp({
+                    methods: {
+                         say(message) {
+                              alert(message);
+                         },
+                         warn(message, event) {
+                              if (event) {
+                                   event.preventDefault();
+                              }
+                              alert(message);
+                         }
+                    }
+               }).mount('#inline-handler');
+
+               Vue.createApp({
+                    methods: {
+                         showEventDetails(area, event) {
+
+                              if (area == 'left') {
+                                   console.log('Left button has been clicked! (x: ' + event.pageX + ', y: ' + event.pageY + ')');
+                              } else {
+                                   console.log('Wheel button has been clicked! (x: ' + event.pageX + ', y: ' + event.pageY + ')');
+                              }
+                         }
+                    }
+               }).mount('#keyboard-event-handler');
+
+          </script>
+
+     </body>
+</html>

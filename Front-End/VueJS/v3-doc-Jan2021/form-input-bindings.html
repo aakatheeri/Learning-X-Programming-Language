@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <style>
+          [v-cloak] { display: none; }
+          .hidden {
+               display: none;
+          }
+          .active {
+               display: block;
+          }
+
+          </style>
+     </head>
+     <body>
+
+          <div id="app">
+
+               <input v-model="message" placeholder="edit me" />
+               <p>
+                    Message is: {{ message }}
+               </p>
+
+               <hr />
+
+               <span>Multiline message is:</span>
+               <p style="white-space: preline;">
+                    {{ messageArea }}
+               </p>
+               <br />
+               <textarea v-model="messageArea" placeholder="add multiple lines"></textarea>
+
+               <hr />
+
+               <input type="checkbox" id="checkbox" v-model="checked" />
+               <label for="checkbox">{{ checked }}</label>
+
+               <div>
+                    <select v-model="selected">
+                         <option disabled value="">
+                              Please select one
+                         </option>
+                         <option>A</option>
+                         <option>B</option>
+                         <option>C</option>
+                    </select>
+
+                    <span> Selected: {{ selected }}</span>
+               </div>
+
+          </div>
+
+          <script src="https://unpkg.com/vue@next"></script>
+          <script>
+
+          Vue.createApp({
+               data() {
+                    return {
+                         message: '',
+                         messageArea: '',
+                         checked: false,
+                         selected: ''
+                    }
+               }
+          }).mount('#app');
+
+
+          </script>
+
+     </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <style>
+          [v-cloak] { display: none; }
+          .hidden {
+               display: none;
+          }
+          .active {
+               display: block;
+          }
+          </style>
+     </head>
+     <body>
+
+          <div id="app" v-cloak>
+
+               <button @click="dayStatus('morning')">Morning</button>
+               <button @click="dayStatus('afternoon')">Afternoon</button>
+               <button @click="dayStatus('night')">Night</button>
+
+               <h1 v-if="status == 'morning'">Good Morning!</h1>
+               <h1 v-else-if="status == 'afternoon'">Good Afternoon!</h1>
+               <h1 v-else>Good Evening</h1>
+
+          </div>
+
+          <script src="https://unpkg.com/vue@next"></script>
+          <script>
+
+          const App = Vue.createApp({
+               data() {
+                    return {
+                         status: 'morning'
+                    }
+               },
+               methods: {
+                    dayStatus(value) {
+                         this.status = value;
+                    }
+               }
+          }).mount('#app');
+
+          </script>
+
+     </body>
+</html>

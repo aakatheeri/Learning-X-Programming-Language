@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <style>
+          [v-cloak] { display: none; }
+          .hidden {
+               display: none;
+          }
+          .active {
+               display: block;
+          }
+          </style>
+     </head>
+     <body>
+
+          <div id="app" v-cloak>
+
+               <button @click="changeMessage">Change Message</button>
+               <button @click="hideMessage">Hide Message</button>
+               <button @click="resetMessage">Reset Message</button>
+
+               <div id="message" :class="{ hidden: !isActive, active: isActive }">
+                    {{ message }}
+               </div>
+
+               <div :class="classObject">
+
+               </div>
+
+          </div>
+
+          <script src="https://unpkg.com/vue@next"></script>
+          <script>
+
+          const App = Vue.createApp({
+               data() {
+                    return {
+                         isActive: false,
+                         error: null,
+                         message: 'The message is written here!'
+                    }
+               },
+               methods: {
+                    changeMessage() {
+                         this.message = 'The message has been changed!';
+                    },
+                    resetMessage() {
+                         this.message = 'The message has been reset';
+                         this.isActive = true;
+                    },
+                    hideMessage() {
+                         this.isActive = false;
+                    }
+               },
+               computed: {
+                    classObject() {
+                         return {
+                              active: this.isActive && !this.error,
+                              'text-danger': this.error && this.error.type === 'fatal'
+                         }
+                    }
+               }
+          }).mount('#app');
+
+          </script>
+
+     </body>
+</html>
