@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <style>
+          [v-cloak] { display: none; }
+          .hidden {
+               display: none;
+          }
+          .active {
+               display: block;
+          }
+
+          </style>
+     </head>
+     <body>
+
+          <div id="app">
+
+               <base-input ref="usernameInput"></base-input>
+
+          </div>
+
+          <script src="https://unpkg.com/vue@next"></script>
+          <script>
+
+          const app = Vue.createApp({});
+
+          app.component('base-input', {
+               template: `<input ref="input" />`,
+               methods: {
+                    focusInput() {
+                         this.$refs.input.focus()
+                    }
+               },
+               mounted() {
+                    this.focusInput();
+               }
+          });
+
+          app.mount('#app');
+
+          </script>
+
+     </body>
+</html>

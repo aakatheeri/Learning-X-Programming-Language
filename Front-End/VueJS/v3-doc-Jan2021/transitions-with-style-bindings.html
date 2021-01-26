@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <style>
+          [v-cloak] { display: none; }
+          .hidden {
+               display: none;
+          }
+          .active {
+               display: block;
+          }
+
+          </style>
+     </head>
+     <body>
+
+          <div id="app" v-cloak>
+
+               <div @mousemove="xCoordinate"
+                    :style="{ backgroundColor: `hsl(${x}, 80%, 50%)` }"
+                    class="movearea">
+
+                    <h3>Move your mouse across the screen...</h3>
+                    <p>
+                         x: {{ x }}
+                    </p>
+               </div>
+
+          </div>
+
+          <script src="https://unpkg.com/vue@next"></script>
+          <script>
+
+          const App = {
+               data() {
+                    return {
+                         x: 0
+                    }
+               },
+               methods: {
+                    xCoordinate(e) {
+                         this.x = e.clientX
+                    }
+               }
+          }
+
+          Vue.createApp(App).mount('#app');
+
+          </script>
+
+     </body>
+</html>
