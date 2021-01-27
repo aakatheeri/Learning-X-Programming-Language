@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <style>
+          [v-cloak] { display: none; }
+          .hidden {
+               display: none;
+          }
+          .active {
+               display: block;
+          }
+
+          .bounce-enter-active {
+               animation: bounce-in 0.5s;
+          }
+          .bounce-leave-active {
+               animation: bounce-in 0.5s reverse;
+          }
+          @keyframes bounce-in {
+               0% {
+                    transform: scale(0);
+               }
+               50% {
+                    transform: scale(1.25);
+               }
+               100% {
+                    transform: scale(1);
+               }
+          }
+
+          </style>
+     </head>
+     <body>
+
+          <div id="app" v-cloak>
+
+               <button @click="show = !show">Toggle show</button>
+               <transition name="bounce">
+                    <p v-if="show">
+                         nulla nulla magna tamen esse enim fugiat malis velit irure eram fugiat quae fore
+                         summis
+                    </p>
+               </transition>
+
+          </div>
+
+          <script src="https://unpkg.com/vue@next"></script>
+          <script>
+
+          const App = {
+               data() {
+                    return {
+                         show: true
+                    }
+               }
+          }
+
+          Vue.createApp(App).mount('#app');
+
+          </script>
+
+     </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.min.css" rel="stylesheet" type="text/css" />
+          <style>
+          [v-cloak] { display: none; }
+          .hidden {
+               display: none;
+          }
+          .active {
+               display: block;
+          }
+
+          </style>
+     </head>
+     <body>
+
+          <div id="app" v-cloak>
+
+               <button @click="show = !show">
+                    Toggle render
+               </button>
+
+               <transition
+                    name="custom-classes-transition"
+                    enter-active-class="animate__animated animate__tada"
+                    leave-active-class="animate__animated animate_bounceOutRight">
+                    <p v-if="show">
+                         Hello
+                    </p>
+               </transition>
+
+          </div>
+
+          <script src="https://unpkg.com/vue@next"></script>
+          <script>
+
+          const App = {
+               data() {
+                    return {
+                         show: true
+                    }
+               }
+          }
+
+          Vue.createApp(App).mount('#app');
+
+          </script>
+
+     </body>
+</html>

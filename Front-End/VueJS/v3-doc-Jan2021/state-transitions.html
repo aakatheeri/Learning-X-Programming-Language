@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <style>
+          [v-cloak] { display: none; }
+          .hidden {
+               display: none;
+          }
+          .active {
+               display: block;
+          }
+
+          </style>
+     </head>
+     <body>
+
+          <div id="app" v-cloak>
+
+               <div id="animated-number-demo">
+                    <input v-model.number="number" type="number" step="20" />
+
+                    <p>
+                         {{ animatedNumber }}
+                    </p>
+               </div>
+
+          </div>
+
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+          <script src="https://unpkg.com/vue@next"></script>
+          <script>
+
+          const App = {
+               data() {
+                    return {
+                         number: 0,
+                         tweenedNumber: 0
+                    }
+               },
+               computed: {
+                    animatedNumber() {
+                         return this.tweenedNumber.toFixed(0)
+                    }
+               },
+               watch: {
+                    number(newValue) {
+                         gsap.to(this.$data, {
+                              duration: 0.5,
+                              tweenedNumber: newValue
+                         })
+                    }
+               }
+          };
+
+          Vue.createApp(App).mount('#app');
+
+          </script>
+
+     </body>
+</html>
