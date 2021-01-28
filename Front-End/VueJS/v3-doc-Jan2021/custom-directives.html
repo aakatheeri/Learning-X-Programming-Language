@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <style>
+          [v-cloak] { display: none; }
+          .hidden {
+               display: none;
+          }
+          .active {
+               display: block;
+          }
+
+          </style>
+     </head>
+     <body>
+
+          <div id="app">
+               
+               <div id="simple-directive">
+                    <input type="text" v-focus />
+               </div>
+               
+               <div id="dyn-dir-arg">
+                    <p>
+                         Scroll down the page
+                    </p>
+                    <p v-pin="pinValue">
+                         Stick me {{ pinValue }}px from the top of the page.
+                    </p>
+               </div>
+               
+               <div id="dynamic-range">
+                    <h2>The range example</h2>
+                    <input type="range" min="0" max="500" v-model="pinPadding" />
+                    <p v-pin:[direction]="pinPadding">
+                         Stick me {{ pinPadding + 'px'}} from the {{ direction }} of the page
+                    </p>
+               </div>
+               
+          </div>
+
+          <script src="https://unpkg.com/vue@next"></script>
+          <script>
+          
+          const simpleDirective = Vue.createApp({})
+          // Register a global custom directive called 'v-focus'
+          simpleDirective.directive('focus', {
+               
+               // When the bound element is mounted into the DOM...
+               mounted(el) {
+                    
+                    // Focus the element
+                    el.focus();
+               
+               }
+               
+          });
+          simpleDirective.mount('#simple-directive');
+          
+          const DynamicDirectiveArguments = Vue.createApp({
+               data() {
+                    return {
+                         pinValue: 100
+                    }
+               }
+          });
+          DynamicDirectiveArguments.directive('pin', {
+               mounted(el, binding) {
+                    el.style.position = 'fixed';
+                    el.style.top = binding.value + 'px';
+               }
+          });
+          DynamicDirectiveArguments.mount('#dyn-dir-arg');
+          
+          const DynamicRangeExample = Vue.createApp({
+               data() {
+                    return {
+                         direction: 'right',
+                         pinPadding: 200
+                    }
+               }
+          });
+          DynamicRangeExample.directive('pin', {
+               mounted(el, binding) {
+                    el.style.position = 'fixed';
+                    const s = binding.arg || 'top';
+                    el.style[s] = binding.value + 'px';
+               },
+               updated(el, binding) {
+                    const s = binding.arg || 'top';
+                    el.style[s] = binding.value + 'px';
+               }
+          });
+          DynamicRangeExample.mount('#dynamic-range');
+          
+          </script>
+
+     </body>
+</html>
