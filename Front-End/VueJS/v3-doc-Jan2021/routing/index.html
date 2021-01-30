@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <style>
+          [v-cloak] { display: none; }
+          .hidden {
+               display: none;
+          }
+          .active {
+               display: block;
+          }
+
+          </style>
+     </head>
+     <body>
+
+          <div id="app">
+               
+          </div>
+
+          <script src="https://unpkg.com/vue@next"></script>
+          <script>
+          
+          const { createApp, h } = Vue;
+          
+          const NotFoundComponent = { template: '<p>Page not found</p>' }
+          const HomeComponent = { template: '<p>Home page. Read more <a href="#/about">about me</a>!</p>' }
+          const AboutComponent = { template: '<p>About page</p>'}
+          
+          const routes = {
+               '/routing/': HomeComponent,
+               '/routing/#/about': AboutComponent
+          }
+          
+          // const pathname = '/' + window.location.pathname.split('/')[window.location.pathname.split('/').length-1];
+          
+          const SimpleRouter = {
+               data: () => ({
+                    currentRoute: window.location.pathname + window.location.hash
+               }),
+               
+               computed: {
+                    CurrentComponent() {
+                         return routes[this.currentRoute] || NotFoundComponent
+                    }
+               },
+               
+               created() {
+                    window.addEventListener('popstate', () => {
+                         this.currentRoute = window.location.pathname + window.location.hash;
+                    });
+               },
+                              
+               render() {
+                    return h(this.CurrentComponent)
+               }
+          }
+          
+          createApp(SimpleRouter).mount('#app');
+          
+          </script>
+
+     </body>
+</html>
