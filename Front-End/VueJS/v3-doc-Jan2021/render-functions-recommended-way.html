@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <style>
+          [v-cloak] { display: none; }
+          .hidden {
+               display: none;
+          }
+          .active {
+               display: block;
+          }
+
+          </style>
+     </head>
+     <body>
+
+          <div id="app" v-cloak>
+
+               <anchored-heading :level="1">Hello World</anchored-heading>
+
+          </div>
+
+          <script src="https://unpkg.com/vue@next"></script>
+          <script>
+
+          const { createApp, h} = Vue;
+
+          const app = createApp({});
+
+          app.component('anchored-heading', {
+               render() {
+                    return h(
+                         'h' + this.level, // tag name
+                         {}, // props/attributes
+                         this.$slots.default() // array of children
+                    )
+               },
+               props: {
+                    level: {
+                         type: Number,
+                         required: true
+                    }
+               }
+          });
+
+          app.mount('#app');
+
+          </script>
+
+     </body>
+</html>

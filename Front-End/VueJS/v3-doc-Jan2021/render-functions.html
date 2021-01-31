@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+     <head>
+          <meta charset="utf-8">
+          <style>
+          [v-cloak] { display: none; }
+          .hidden {
+               display: none;
+          }
+          .active {
+               display: block;
+          }
+
+          </style>
+     </head>
+     <body>
+
+          <div id="app" v-cloak>
+
+               <anchored-heading :level="2">Hello World</anchored-heading>
+
+          </div>
+
+          <script src="https://unpkg.com/vue@next"></script>
+          <script>
+
+          const app = Vue.createApp({});
+
+          app.component('anchored-heading', {
+               template: `
+                    <h1 v-if="level ===1">
+                         <slot></slot>
+                    </h1>
+                    <h2 v-else-if="level === 2">
+                         <slot></slot>
+                    </h2>
+                    <h3 v-else-if="level === 3">
+                         <slot></slot>
+                    </h3>
+                    <h4 v-else-if="level === 4">
+                         <slot></slot>
+                    </h4>
+                    <h5 v-else-if="level === 5">
+                         <slot></slot>
+                    </h5>
+               `,
+               props: {
+                    level: {
+                         type: Number,
+                         required: true
+                    }
+               }
+          });
+
+          app.mount('#app');
+
+          </script>
+
+     </body>
+</html>
