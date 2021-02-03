@@ -1,0 +1,7 @@
+{
+  "name": "last-news",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}

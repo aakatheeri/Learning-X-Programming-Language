@@ -1,0 +1,15 @@
+
+Last News App:
+
+☐ When user click on news title -> move to news Details item on new modal
+☐ News Details item includes title and content of news
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Completed:
+
+- (v 0.1):
+☐ Menu theme app
+☐ Menu items of several news sources (Rest API)
+     ☐ BBC News
+     ☐ The Washington Post
+☐ Each updated News View includes last updated News
