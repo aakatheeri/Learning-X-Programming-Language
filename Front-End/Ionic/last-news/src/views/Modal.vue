@@ -14,7 +14,12 @@
      </ion-header>
 
      <ion-content class="ion-padding">
-          {{ content }}
+
+          <h2>{{ title }}</h2>
+
+          <p>{{ description }}</p>
+          <p>{{ content }}</p>
+
      </ion-content>
 
 </template>
@@ -42,6 +47,10 @@ export default defineComponent({
           content: {
                type: String,
                default: 'Content'
+          },
+          description: {
+               type: String,
+               default: 'Description'
           }
      },
      methods: {
