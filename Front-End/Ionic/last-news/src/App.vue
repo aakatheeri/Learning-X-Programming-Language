@@ -1,7 +1,9 @@
 <template>
   <IonApp>
 
-    <IonSplitPane content-id="main-content">
+    <Intro v-if="!isIntroShowOnce" />
+
+    <IonSplitPane content-id="main-content" v-if="showAfterDelay">
 
       <ion-menu content-id="main-content" type="overlay">
 
@@ -35,10 +37,11 @@
 </template>
 
 <script lang="ts">
-import { IonApp, IonContent, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonNote, IonRouterOutlet, IonSplitPane } from '@ionic/vue';
+import { IonApp, IonContent, IonItem, IonLabel, IonList, IonListHeader, IonMenu, IonMenuToggle, IonNote, IonRouterOutlet, IonSplitPane } from '@ionic/vue';
 import { defineComponent, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import { bookmarkOutline, bookmarkSharp } from 'ionicons/icons';
+import { Plugins } from '@capacitor/core';
+import Intro from './views/Intro.vue';
 
 export default defineComponent({
   name: 'App',
@@ -54,8 +57,51 @@ export default defineComponent({
     IonNote,
     IonRouterOutlet,
     IonSplitPane,
+    Intro
+  },
+  data() {
+     return {
+          isIntroShowOnce: false,
+          showAfterDelay: false
+     }
+  },
+  created() {
+
+       this.getIntroStatus();
+
+  },
+  methods: {
+     getIntroStatus() {
+
+          this.$nextTick(() => {
+               const { Storage } = Plugins;
+               Storage.get({ key: 'IntroShowOnce'}).then((result) => {
+                    if (result.value == 'false') {
+                         this.isIntroShowOnce = false;
+                         setTimeout(() => {
+                              this.showAfterDelay = true;
+                         }, 500);
+                    } else {
+                         this.isIntroShowOnce = true;
+                         this.showAfterDelay = true;
+                    }
+               });
+          })
+     }
   },
   setup() {
+
+    const { Storage } = Plugins;
+    // Storage.remove({ key: 'IntroShowOnce' });
+
+    Storage.get({ key: 'IntroShowOnce'}).then((result) => {
+          if (result.value == null) {
+               Storage.set({
+                    key: 'IntroShowOnce',
+                    value: 'false'
+               });
+          }
+    });
 
     const selectedIndex = ref(0);
     const appPages = [
@@ -79,10 +125,7 @@ export default defineComponent({
     return {
       selectedIndex,
       appPages,
-      bookmarkOutline,
-      bookmarkSharp,
-
-      isSelected: (url: string) => url === route.path ? 'selected' : ''
+      isSelected: (url: string) => url === route.path ? 'selected' : '',
     }
   }
 });

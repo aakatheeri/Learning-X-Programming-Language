@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
+// import Vue from 'vue';
 import App from './App.vue'
+import Intro from './views/Intro.vue'
 import router from './router';
 
 import { IonicVue } from '@ionic/vue';
@@ -23,10 +25,14 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
+// Vue.prototype.$appName = 'nothing';
+
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
-  
+
+app.config.globalProperties.$introEnabledOnce = false;
+
 router.isReady().then(() => {
   app.mount('#app');
 });
