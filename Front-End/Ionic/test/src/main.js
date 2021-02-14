@@ -1,27 +1,39 @@
-"use strict";
-exports.__esModule = true;
-var vue_1 = require("vue");
-var App_vue_1 = require("./App.vue");
-var router_1 = require("./router");
-var vue_2 = require("@ionic/vue");
+import { createApp } from 'vue'
+
+import App from './App.vue'
+import BaseLoyout from './components/base/BaseLayout.vue';
+import router from './router';
+import store from './store';
+
+import { IonicVue } from '@ionic/vue';
+
 /* Core CSS required for Ionic components to work properly */
-require("@ionic/vue/css/core.css");
+import '@ionic/vue/css/core.css';
+
 /* Basic CSS for apps built with Ionic */
-require("@ionic/vue/css/normalize.css");
-require("@ionic/vue/css/structure.css");
-require("@ionic/vue/css/typography.css");
+import '@ionic/vue/css/normalize.css';
+import '@ionic/vue/css/structure.css';
+import '@ionic/vue/css/typography.css';
+
 /* Optional CSS utils that can be commented out */
-require("@ionic/vue/css/padding.css");
-require("@ionic/vue/css/float-elements.css");
-require("@ionic/vue/css/text-alignment.css");
-require("@ionic/vue/css/text-transformation.css");
-require("@ionic/vue/css/flex-utils.css");
-require("@ionic/vue/css/display.css");
+import '@ionic/vue/css/padding.css';
+import '@ionic/vue/css/float-elements.css';
+import '@ionic/vue/css/text-alignment.css';
+import '@ionic/vue/css/text-transformation.css';
+import '@ionic/vue/css/flex-utils.css';
+import '@ionic/vue/css/display.css';
+
 /* Theme variables */
-require("./theme/variables.css");
-var app = vue_1.createApp(App_vue_1["default"])
-    .use(vue_2.IonicVue)
-    .use(router_1["default"]);
-router_1["default"].isReady().then(function () {
-    app.mount('#app');
+import './theme/variables.css';
+import './theme/core.css';
+
+const app = createApp(App)
+  .use(IonicVue)
+  .use(router)
+  .use(store);
+
+app.component('base-layout', BaseLoyout);
+
+router.isReady().then(() => {
+  app.mount('#app');
 });
