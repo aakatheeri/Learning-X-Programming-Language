@@ -3,3 +3,7 @@ ion-toolbar {
      --background: var(--ion-color-primary);
      --color: var(--ion-color-primary-contrast);
 }
+
+ion-toolbar ion-button, ion-toolbar ion-back-button {
+     --color: var(--ion-color-primary-contrast);
+}

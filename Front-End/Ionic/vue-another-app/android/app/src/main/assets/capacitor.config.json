@@ -1,0 +1,13 @@
+{
+  "appId": "com.ahmedalkatheeri.vuememories",
+  "appName": "Vue Memories",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

@@ -51,3 +51,10 @@ export default {
 }
 
 </script>
+
+<style scoped>
+ion-back-button {
+   /* display: block; */
+   /* --color: black; */
+}
+</style>
