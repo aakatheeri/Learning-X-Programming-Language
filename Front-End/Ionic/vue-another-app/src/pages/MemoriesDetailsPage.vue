@@ -25,11 +25,6 @@ export default {
           loadedMemory() {
                return this.$store.getters.memory(this.memoryId);
           }
-     },
-     // watch: {
-     //      '$route'(currentRoute) {
-     //           this.memoryId = currentRoute.params.id;
-     //      }
-     // }
+     }
 }
 </script>

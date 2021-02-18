@@ -1,0 +1,23 @@
+
+Travel Story:
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Completed:
+
+- (v 0.1):
+     ✔ Tabs app view @done(2021-02-17 22:25) @project(- \(v 0.1\))
+     ✔ [Tab 1] App shows the last stories @done(2021-02-18 15:03) @project(- \(v 0.1\))
+     ✔ [Tab 2] App shows statistics (number of stories, number of visited cities, Overview of cities so far) @done(2021-02-18 15:40) @project(- \(v 0.1\))
+     ✔ [Tab 1 -> Story Details View] Each story shows Story Title, Trip Date (e.g. Jan 2020), Visited City/Cities, Best Picture Thumbnail, Story Content @done(2021-02-18 16:36) @project(- \(v 0.1\))
+
+- (v 0.2):
+     ☐ Save stories on App Storage / Native Storage
+     ☐ Show Trips Overview using native database
+     ☐ Show Trip details using native database
+     ☐ Ability to add new story through the App (form)
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Targeted Features:
+     - Native Storage
+     - Vue Router (*)
+     - Upload Images from Photo library (*)
