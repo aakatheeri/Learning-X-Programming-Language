@@ -19,9 +19,12 @@
       <!-- List of stories -->
       <ion-card
           v-for="story in stories"
-          :key="story.id">
+          :key="story.id"
+           >
 
-           <ion-item class="story-item" router-link="/tabs/tab1/1">
+           <ion-item class="story-item"
+               :router-link="`/tabs/tab1/${story.id}`"
+               button="true">
 
                <ion-thumbnail slot="start">
                     <img :src="story.pictureURL" />
@@ -73,30 +76,7 @@ export default  {
      },
      data() {
           return {
-               stories: [{
-                         title: 'Impressive Trip',
-                         description: 'This was a amazing trip!',
-                         city: 'Amsterdam',
-                         pictureURL: 'https://www.travelanddestinations.com/wp-content/uploads/2020/05/People-in-a-car-off-on-a-trip.jpg'
-                    },
-                    {
-                         title: 'Vegans In',
-                         description: 'A round trip on Las Vegas!',
-                         city: 'Las Vigas',
-                         pictureURL: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/90/b1/d5/las-vegas-welcome-sign.jpg?w=1000&h=600&s=1'
-                    },
-                    {
-                         title: 'Romantic Place',
-                         description: 'Feeling romantic all day in this trip!',
-                         city: 'Malaga',
-                         pictureURL: 'https://spanishsabores.com/wp-content/uploads/2015/08/Sunset-Gibralfaro.jpg'
-                    },
-                    {
-                         title: 'Nature and mountains',
-                         description: 'Never see the a cold nature and beautiful trip like this!',
-                         city: 'Zurich',
-                         pictureURL: 'https://www.planetware.com/wpimages/2020/06/switzerland-zurich-to-rhine-falls-3-ways-to-get-there-by-tour.jpg'
-               }]
+               stories: this.$store.getters.getCurrentStories
           }
      }
 }

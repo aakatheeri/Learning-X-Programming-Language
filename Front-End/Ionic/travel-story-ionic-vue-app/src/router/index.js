@@ -17,12 +17,10 @@ const routes = [
       {
         path: 'tab1',
         component: () => import('@/views/Tab1.vue'),
-        children: [
-             {
-                  path: ':id',
-                  component: () => import('@/views/StoryDetails.vue')
-             }
-        ]
+      },
+      {
+           path: 'tab1/:id',
+           component: () => import('@/views/StoryDetails.vue')
       },
       {
         path: 'tab2',

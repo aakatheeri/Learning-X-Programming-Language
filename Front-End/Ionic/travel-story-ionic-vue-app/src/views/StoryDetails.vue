@@ -6,35 +6,49 @@
                <ion-buttons slot="start">
                     <ion-back-button></ion-back-button>
                </ion-buttons>
-               <ion-title>Story Title</ion-title>
+               <ion-title>{{ loadedStory ? loadedStory.title : 'Loading..' }}</ion-title>
             </ion-toolbar>
           </ion-header>
 
-          <ion-content class="ion-padding">
-               <h3>Picture should be here</h3>
-               <p>
-                    quis summis aliqua ipsum nisi ipsum tamen nulla multos dolore multos duis duis
-                    fore culpa sunt tempor quem amet summis duis tempor multos cillum multos tamen
-                    magna anim sint tamen culpa tamen quis elit veniam nisi quorum fugiat export
-                    minim eram malis legam eram legam
-               </p>
+          <ion-content>
+
+               <h2 v-if="!loadedStory">Sorry, could not load the story!</h2>
+
+               <div v-else>
+
+                    <ion-img :src="loadedStory.pictureURL"></ion-img>
+
+                    <div class="ion-padding">
+
+                         <p>{{ loadedStory.description }}</p>
+
+                         <ion-text color="medium">
+                              This trip was in <strong>{{ loadedStory.city }}</strong> city.
+                         </ion-text>
+
+                    </div>
+
+               </div>
+
           </ion-content>
 
      </ion-page>
 </template>
 
 <script>
-import { IonPage, IonContent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle } from '@ionic/vue';
+import { IonPage, IonContent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonImg, IonText } from '@ionic/vue';
 export default {
      name: 'StoryDetails',
-     components: {
-          IonPage,
-          IonContent,
-          IonHeader,
-          IonToolbar,
-          IonButtons,
-          IonBackButton,
-          IonTitle
+     components: { IonPage, IonContent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonImg, IonText },
+     data() {
+          return {
+               storyID: parseInt(this.$route.params.id)
+          }
+     },
+     computed: {
+          loadedStory() {
+               return this.$store.getters.getSelectedStory(this.storyID);
+          }
      }
 }
 
