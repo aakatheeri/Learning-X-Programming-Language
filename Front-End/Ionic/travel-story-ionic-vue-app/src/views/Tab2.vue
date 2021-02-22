@@ -1,59 +1,43 @@
 <template>
-  <ion-page>
+     
+     <base-layout title="Trips Overview">
 
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Trips Overview</ion-title>
-      </ion-toolbar>
-    </ion-header>
+          <ion-text color="primary">
+               <h4>Trips in numbers</h4>
+          </ion-text>
 
-    <ion-content :fullscreen="true" class="ion-padding">
+          <ion-list lines="full">
+               <ion-item>
+                    <ion-icon :icon="journal" slot="start"></ion-icon>
+                    <ion-label>{{ numberOfTrips }} Added Trips</ion-label>
+               </ion-item>
 
-      <!-- For iOS platform view -->
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Trips Overview</ion-title>
-        </ion-toolbar>
-      </ion-header>
+               <ion-item lines="full">
+                    <ion-icon :icon="planet" slot="start"></ion-icon>
+                    <ion-label>{{ numberOfCities }} Visited Cities</ion-label>
+               </ion-item>
+          </ion-list>
 
-      <ion-text color="primary">
-           <h4>Trips in numbers</h4>
-      </ion-text>
+          <br />
+          <br />
 
-      <ion-list lines="full">
-           <ion-item>
-                <ion-icon :icon="journal" slot="start"></ion-icon>
-                <ion-label>{{ numberOfTrips }} Added Trips</ion-label>
-           </ion-item>
+          <ion-button expand="block" @click="shareTheApp">
+               Share the app!
+          </ion-button>
 
-           <ion-item lines="full">
-                <ion-icon :icon="planet" slot="start"></ion-icon>
-                <ion-label>{{ numberOfCities }} Visited Cities</ion-label>
-           </ion-item>
-      </ion-list>
+     </base-layout>
 
-      <br />
-      <br />
-
-      <ion-button expand="block" @click="shareTheApp">
-           Share the app!
-      </ion-button>
-
-    </ion-content>
-
-  </ion-page>
 </template>
 
 <script>
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonText, IonButton, IonList, IonItem, IonIcon, IonLabel } from '@ionic/vue';
+import { IonText, IonButton, IonList, IonItem, IonIcon, IonLabel } from '@ionic/vue';
+import BaseLayout from '../components/BaseLayout.vue';
 import { journal, planet } from 'ionicons/icons';
 import { Plugins } from '@capacitor/core';
 
-
-
 export default  {
      name: 'Tab2',
-     components: { IonHeader, IonToolbar, IonTitle, IonContent, IonPage, IonText, IonButton, IonList, IonItem, IonIcon, IonLabel },
+     components: { IonText, IonButton, IonList, IonItem, IonIcon, IonLabel, BaseLayout },
      data() {
           return { journal, planet }
      },
@@ -61,7 +45,7 @@ export default  {
           async shareTheApp() {
 
                console.log('Share The app!');
-               
+
                const { Share } = Plugins;
 
                return await Share.share({

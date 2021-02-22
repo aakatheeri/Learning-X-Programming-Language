@@ -33,6 +33,23 @@ export const store = createStore({
                }]
           }
      },
+     mutations: {
+          addStory (state, storyData) {
+               const newStory = {
+                    id: state.stories.length+1,
+                    title: storyData.title,
+                    description: storyData.description,
+                    city: storyData.city,
+                    pictureURL: storyData.pictureURL
+               };
+               state.stories.unshift(newStory);
+          }
+     },
+     actions: {
+          addStory (context, storyData) {
+               context.commit('addStory', storyData);
+          }
+     },
      getters: {
           getCurrentStories (state) {
                return state.stories;

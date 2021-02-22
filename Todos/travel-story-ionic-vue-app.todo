@@ -14,11 +14,14 @@ Completed:
      ✔ Save stories on Local Story (Vuex) @done(2021-02-20 21:23) @project(- \(v 0.2\))
      ✔ Show Trip details Local Story (Vuex) @done(2021-02-20 21:23) @project(- \(v 0.2\))
      ✔ Show Trips Overview Local Story (Vuex) @done(2021-02-20 21:41) @project(- \(v 0.2\))
-     ☐ Share the app feature
+     ✔ Share the app feature @done(2021-02-20 22:37) @project(- \(v 0.2\))
 
 - (v 0.3):
-     ☐ Ability to add new story through the App (form)
+     ✔ Ability to add new story through the App (form) @done(2021-02-22 21:34) @project(- \(v 0.3\))
 
+- (v 0.4):
+     ☐ Upload an image from library
+     
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Targeted Features:
      - Native Storage
