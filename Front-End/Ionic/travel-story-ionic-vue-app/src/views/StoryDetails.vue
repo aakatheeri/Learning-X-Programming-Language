@@ -1,16 +1,6 @@
 <template>
-     <ion-page>
 
-          <ion-header>
-            <ion-toolbar>
-               <ion-buttons slot="start">
-                    <ion-back-button></ion-back-button>
-               </ion-buttons>
-               <ion-title>{{ loadedStory ? loadedStory.title : 'Loading..' }}</ion-title>
-            </ion-toolbar>
-          </ion-header>
-
-          <ion-content>
+     <base-layout :title="loadedStory.title" page-default-back-link="/tabs/tab1">
 
                <h2 v-if="!loadedStory">Sorry, could not load the story!</h2>
 
@@ -30,16 +20,16 @@
 
                </div>
 
-          </ion-content>
+     </base-layout>
 
-     </ion-page>
 </template>
 
 <script>
-import { IonPage, IonContent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonImg, IonText } from '@ionic/vue';
+import { IonImg, IonText } from '@ionic/vue';
+import BaseLayout from '../components/BaseLayout.vue';
 export default {
      name: 'StoryDetails',
-     components: { IonPage, IonContent, IonHeader, IonToolbar, IonButtons, IonBackButton, IonTitle, IonImg, IonText },
+     components: { IonImg, IonText, BaseLayout },
      data() {
           return {
                storyID: parseInt(this.$route.params.id)

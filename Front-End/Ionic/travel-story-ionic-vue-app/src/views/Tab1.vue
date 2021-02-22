@@ -1,83 +1,84 @@
 <template>
-  <ion-page>
 
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Travel Stories</ion-title>
-      </ion-toolbar>
-    </ion-header>
+     <base-layout title="Travel Stories">
+          <template v-slot:actions-end>
+               <ion-button @click="addNewStory">
+                    <ion-icon slot="icon-only" :icon="add"></ion-icon>
+               </ion-button>
+          </template>
 
-    <ion-content :fullscreen="true" class="ion-padding">
+          <!-- List of stories -->
+          <ion-card
+              v-for="story in stories"
+              :key="story.id"
+               >
 
-      <!-- For iOS platform view -->
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Travel Stories</ion-title>
-        </ion-toolbar>
-      </ion-header>
+               <ion-item class="story-item"
+                   :router-link="`/tabs/tab1/${story.id}`"
+                   button="true">
 
-      <!-- List of stories -->
-      <ion-card
-          v-for="story in stories"
-          :key="story.id"
-           >
+                   <ion-thumbnail slot="start">
+                        <img :src="story.pictureURL" />
+                   </ion-thumbnail>
 
-           <ion-item class="story-item"
-               :router-link="`/tabs/tab1/${story.id}`"
-               button="true">
+                   <ion-card-header>
+                        <ion-card-subtitle>{{ story.city }}</ion-card-subtitle>
+                        <ion-card-title>{{ story.title }}</ion-card-title>
+                   </ion-card-header>
 
-               <ion-thumbnail slot="start">
-                    <img :src="story.pictureURL" />
-               </ion-thumbnail>
+               </ion-item>
 
-               <ion-card-header>
-                    <ion-card-subtitle>{{ story.city }}</ion-card-subtitle>
-                    <ion-card-title>{{ story.title }}</ion-card-title>
-               </ion-card-header>
+          </ion-card>
 
-           </ion-item>
+     </base-layout>
 
-      </ion-card>
-
-    </ion-content>
-
-  </ion-page>
 </template>
 
 <script>
 import {
-     IonPage,
-     IonHeader,
-     IonToolbar,
-     IonTitle,
-     IonContent,
      IonCard,
      IonCardHeader,
      IonCardSubtitle,
      IonCardTitle,
      IonItem,
      IonThumbnail,
+     IonIcon,
+     IonButton,
+     modalController
 } from '@ionic/vue';
+import { add } from 'ionicons/icons';
+import BaseLayout from '../components/BaseLayout.vue';
+import AddNewStory from '../components/AddNewStory.vue';
 
 export default  {
      name: 'Tab1',
      components: {
-          IonHeader,
-          IonToolbar,
-          IonTitle,
-          IonContent,
-          IonPage,
           IonCard,
           IonCardHeader,
           IonCardSubtitle,
           IonCardTitle,
           IonItem,
           IonThumbnail,
+          IonIcon,
+          IonButton,
+          BaseLayout
      },
      data() {
           return {
-               stories: this.$store.getters.getCurrentStories
+               stories: this.$store.getters.getCurrentStories,
+               add
           }
+     },
+     methods: {
+          async addNewStory() {
+               console.log('Add new story');
+
+               const modal = await modalController.create({
+                    component: AddNewStory
+               });
+               return modal.present();
+          }
+
      }
 }
 </script>
