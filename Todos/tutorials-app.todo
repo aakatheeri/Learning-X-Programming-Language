@@ -1,0 +1,46 @@
+
+Tutorials App:
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Completed:
+
+- (v 0.1):
+     ☐ App contains 3 Tabs
+          ✔ Tutorials (group of tutorials devided by categories) @done(2021-02-24 00:32) @project(- \(v 0.1\))
+          ☐ Tutorial details view (contains Title, Content, Action button (Next / Done ))
+               ☐ Tutorial Completion Message (Alert, Popup)
+
+     ✔ Statistics @done(2021-02-24 00:32) @project(- \(v 0.1\))
+          ☐ Overview of user activities (Number of completed tutorials, Number of competed categories)
+     ✔ About @done(2021-02-24 00:32) @project(- \(v 0.1\))
+          ✔ Some information about the app @done(2021-02-24 00:32) @project(- \(v 0.1\))
+
+- (v 0.2):
+     Link session to static files of tutorials (import them)
+          Tutorials should should be devided by Slides (ion-slides)
+     Create Continue / Done button
+          Button action should based on current slide (continue if there is a slide, done if all slides passed)
+
+- (v 0.2.1):
+     Create Vuex store that contain all lessons, sessions, tutorials
+
+- (v 0.3):
+     Create 'Share the app' feature
+     Create Storage for update progress (current lesson, session, tutorial, completed tutorials, completed sessions)
+     Lock uncompleted sessions (through Storage)
+
+＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+Targeted Features:
+     - Vuex
+     - Vue Router (*)
+     - Tabs theme view
+     - Storage
+
+--
+
+Save tutorials on vue.templates
+
+Options to structure the sessions' tutorials:
+     - Save tutorials on vue.templates and import them based on selected session.
+     - Save the tutorials on Vuex store module.
+     - Save tutorials in one single .vue template and show it based on selected session.
