@@ -9,11 +9,11 @@
     <ion-content :fullscreen="true" class="ion-padding">
 
          <div
-               v-for="category in categories"
-               :key="category.id">
+               v-for="lesson in lessons"
+               :key="lesson.id">
 
                <ion-text color="primary">
-                   <h1><strong>{{ category.title }}</strong></h1>
+                   <h1><strong>{{ lesson.title }}</strong></h1>
                </ion-text>
 
                <br />
@@ -21,10 +21,10 @@
                <ion-grid class="grid-box">
                   <ion-row>
                        <ion-col
-                              v-for="session in category.sessions"
+                              v-for="session in lesson.sessions"
                               :key="session.id"
                               size="6"
-                              @click="openSessionModal(session.title, session.id)">
+                              @click="openSessionModal(session.title, session.id, lesson.id)">
                             <h5><strong>{{ session.title }}</strong></h5>
                             <p>{{ session.description }}</p>
                        </ion-col>
@@ -62,53 +62,24 @@ export default  {
      },
      data() {
           return {
-               categories: {
-                    category_1: {
-                         title: 'Category 1',
-                         sessions: [
-                              {
-                                   id: 1,
-                                   title: 'Session One',
-                                   description: 'Quid duis duis illum.',
-                                   content: '<p>Some Content</p>'
-                              },
-                              {
-                                   id: 2,
-                                   title: 'Session Two',
-                                   description: 'Nulla nisi eram labore quae.',
-                                   content: '<p>Some Content</p>'
-                              },
-                              {
-                                   id: 3,
-                                   title: 'Session Three',
-                                   description: 'Quem noster quem anim amet.',
-                                   content: '<p>Some Content</p>'
-                              },
-                              {
-                                   id: 4,
-                                   title: 'Session Four',
-                                   description: 'Tempor ipsum dolor velit fore.',
-                                   content: '<p>Some Content</p>'
-                              },
-                              {
-                                   id: 4,
-                                   title: 'Session Five',
-                                   description: 'Velit quorum dolore enim enim sint.',
-                                   content: '<p>Some Content</p>'
-                              }
-                         ]
-                    }
-               }
+               lessons: null
           }
      },
+     mounted() {
+          this.$nextTick(() => {
+               this.lessons = this.$store.getters.getCurrentLessons;
+          });
+
+     },
      methods: {
-          async openSessionModal(sessionTitle, sessionID) {
+          async openSessionModal(sessionTitle, sessionID, lessonID) {
                const modal = await modalController
                     .create({
                          component: SessionModalView,
                          componentProps: {
-                              title: sessionTitle,
-                              id: sessionID
+                              session_title: sessionTitle,
+                              session_id: sessionID,
+                              lesson_id: lessonID
                          }
                     });
                return modal.present();
