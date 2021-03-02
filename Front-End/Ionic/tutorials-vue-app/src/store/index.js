@@ -23,12 +23,19 @@ const store = createStore({
                                         `,
                                         `
                                         <h2>Second tutorial</h2>
-                                        <p>Dolor quid quem duis culpa sint quis noster duis nulla noster aliqua malis 
+                                        <p>Dolor quid quem duis culpa sint quis noster duis nulla noster aliqua malis
                                         multos malis fugiat quid eram illum quis enim quae tamen nulla labore legam
                                         ipsum aliqua elit amet.</p>
                                         <p>Fugiat quem fore quae dolor minim aliqua nulla noster minim amet esse sint
                                         noster fore enim fore quorum sunt aute minim quem quae irure aliqua cillum amet
                                         dolore enim labore aliqua noster quem irure noster nulla enim tamen elit amet.</p>
+                                        `,
+                                        `
+                                        <h2>Thrid tutorial</h2>
+                                        <p>Esse fore aliqua quid quis labore amet esse duis tamen quis sunt nulla multos
+                                        anim velit nisi duis summis quis ipsum eram illum legam summis enim elit sint
+                                        velit cillum enim labore quem tamen summis fore quorum duis sint irure aliqua
+                                        quae quae quis tempor quae dolor nisi fore tempor</p>
                                         `
                                    ]
                               },
@@ -54,26 +61,112 @@ const store = createStore({
                                         sempiternum, ad arbitror domesticarum. Elit laboris graviterque ab si esse velit
                                         hic probant a cillum eiusmod ab praesentibus iis ipsum eu ne elit senserit.</p>
                                         `,
-                                        'Content 2'
+                                        `
+                                        <h2>Check another tutorial!</h2>
+                                        <p>Anim tempor legam anim magna esse summis amet elit culpa fugiat cillum fugiat
+                                        sunt minim anim nulla dolore amet dolor labore labore dolore veniam fugiat culpa
+                                        labore eram tamen labore velit quorum dolore quis dolor aliqua summis veniam
+                                        quid veniam aute quis culpa sint minim velit magna tamen culpa tamen.</p>
+                                        <p>Aliqua quis minim duis dolor magna quis aliqua malis quid magna tamen summis
+                                        labore cillum nulla summis velit magna amet irure minim duis nisi irure.</p>
+                                        `
                                    ]
                               },
                               {
                                    id: 3,
                                    title: 'Session Three',
                                    description: 'Quem noster quem anim amet.',
-                                   content: '<p>Some Content</p>'
+                                   content: [
+                                        `
+                                        <h2>One of the tutorials should be appeared here</h2>
+
+                                        <p>
+                                             Nisi esse aute illum quae sint tamen velit dolor tamen fore summis duis multos
+                                             legam ipsum summis tempor ipsum anim quid malis quem tempor multos cillum legam
+                                             multos sint quid velit aliqua eram dolor elit legam quid irure illum multos.
+                                        </p>
+
+                                        <p>
+                                             Sunt summis velit legam tempor eram fore aliqua tamen quem malis legam duis
+                                             minim labore labore tamen duis anim fugiat labore aute culpa multos legam legam
+                                             anim nisi tempor cillum amet malis malis irure aliqua nulla fore tamen aliqua
+                                             velit sint illum labore illum sint.
+                                        </p>
+                                        `,
+                                        `
+                                        <h2>Next tutorial please!</h2>
+
+                                        <p>
+                                             Export minim noster sunt enim culpa nisi irure fore quae fore fugiat dolore
+                                             veniam sint nisi ipsum elit nulla tempor minim summis labore nulla export dolore
+                                             quid sint labore aute duis esse dolore labore fugiat fore magna fore aute dolor
+                                             cillum illum malis magna anim illum irure labore tamen quis.
+                                        </p>
+
+                                        <div class="terminal_view">
+                                             <p>Device :~ cd /new/path/</p>
+                                        </div>
+
+                                        <p>
+                                             Fore quorum tempor amet aliqua aute quorum summis aliqua esse malis fugiat
+                                             noster fugiat fore velit nisi nisi noster eram.
+                                        </p>
+                                        `
+                                   ]
                               },
                               {
                                    id: 4,
                                    title: 'Session Four',
                                    description: 'Tempor ipsum dolor velit fore.',
-                                   content: '<p>Some Content</p>'
+                                   content: [
+                                        `
+                                        <h2>Make more tutorials</h2>
+
+                                        <p></p>
+
+                                        <p>Eu duis aliqua eu laboris an ab velit voluptate possumus. Tamen nescius ullamco.
+                                        Ita aliqua export nisi iudicem, qui dolore magna an quamquam, aliquip dolor ut
+                                        nostrud philosophari sed excepteur ita quibusdam si offendit si dolore vidisse,
+                                        anim ea arbitror ea summis, sed velit.</p>
+
+                                        <p>Legam in cupidatat de e quid non fugiat. Tempor ullamco e philosophari.Nam veniam sint in consequat. Illum ne ab elit
+                                        appellat, possumus eu aliquip. Esse te quamquam do labore.</p>
+                                        `,
+                                        `
+                                        <h2>Another tutorial!</h2>
+
+                                        <p>Summis ullamco id elit quae ab de quorum e aliqua, non vidisse transferrem, et
+                                        anim pariatur, deserunt quem iudicem arbitror, mentitum hic quem quibusdam,
+                                        ullamco minim doctrina voluptate.</p>
+
+                                        <p>Offendit export enim ubi irure. Eu cillum quo
+                                        elit. Ea magna commodo consequat, laborum sunt senserit non ex quis arbitror
+                                        commodo o minim ita incurreret.Velit admodum in nulla malis. Non eram
+                                        philosophari e ne ita exquisitaque. Arbitror quid illum laborum quem do et duis
+                                        ullamco adipisicing, de esse officia, se aliquip graviterque.</p>
+                                        `
+                                   ]
                               },
                               {
-                                   id: 4,
+                                   id: 5,
                                    title: 'Session Five',
                                    description: 'Velit quorum dolore enim enim sint.',
-                                   content: '<p>Some Content</p>'
+                                   content: [
+                                        `
+                                        <h2>The last episode</h2>
+
+                                        <p>Ubi quorum deserunt exercitation. Probant ubi cernantur, minim exercitation
+                                        expetendis legam proident, quae singulis ita comprehenderit, nescius sint ipsum
+                                        doctrina quid. Ab fabulas iis doctrina, quis aliquip ne transferrem et tamen
+                                        exquisitaque incididunt fugiat commodo.
+
+                                        <p>Id quid eram qui nescius, et officia iis eiusmod a eiusmod iis summis, nisi nescius aut mentitum id te voluptate tractavissent.Vidisse sed vidisse, te summis iis multos, quamquam eram commodo
+                                        cupidatat, ut culpa fore nulla consequat est minim ea excepteur, culpa
+                                        incididunt laborum, culpa incididunt se senserit aut multos instituendarum
+                                        cupidatat irure deserunt. Sunt est ab irure admodum, aliquip irure amet
+                                        voluptate veniam. Malis iis eiusmod.</p>
+                                        `
+                                   ]
                               }
                          ]
                }] // end of Lessons

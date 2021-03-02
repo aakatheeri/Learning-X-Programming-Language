@@ -8,18 +8,28 @@
                     </ion-button>
                </ion-buttons>
                <ion-title>{{ session_title }}</ion-title>
+
           </ion-toolbar>
+
+          <!-- Progress bar used to let user know the of sessions completion progress -->
+          <ion-progress-bar :value="currentSlidesProgress"></ion-progress-bar>
+
+          <span class="tutorial-number">{{ currentTutorialNumber }}</span>
+
      </ion-header>
 
-     <ion-content class="ion-padding">
 
-          <!-- <div v-html="session.content"></div> -->
+
+     <ion-content ref="tutorialContent" class="ion-padding" scrollEvents="true">
+
+
 
           <ion-slides
                pager="false"
-               scrollbar="true"
+               scrollbar="false"
                :options="slideOpts"
-               ref="slides">
+               ref="slides"
+               v-if="showSlides">
                <ion-slide
                     v-for="tutorial in session.content"
                     :key="tutorial.id">
@@ -30,31 +40,34 @@
      </ion-content>
 
      <ion-footer class="ion-no-border">
-          <ion-button expand="block" color="primary" @click="nextTutorial">{{ nextActionButtonContent}}</ion-button>
+          <!-- Next action from the user after finish the tutorial -->
+          <ion-button :disabled="isNextActionButtonDisabled" expand="block" color="primary" @click="nextTutorial">{{ nextActionButtonContent}}</ion-button>
      </ion-footer>
 
 </template>
 
 <script>
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton, IonButtons, IonSlides, IonSlide, IonFooter, modalController, alertController } from '@ionic/vue';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton, IonButtons, IonSlides, IonSlide, IonFooter, IonProgressBar, modalController, alertController } from '@ionic/vue';
 import {defineComponent } from 'vue';
 import { close } from 'ionicons/icons';
 
 export default defineComponent ({
      name: 'SessionModalView',
      components: {
-          IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton, IonButtons, IonSlides, IonSlide, IonFooter
+          IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton, IonButtons, IonSlides, IonSlide, IonFooter, IonProgressBar
      },
+     // Properties used to get specific data from parent component
      props: ['session_title', 'session_id', 'lesson_id'],
-     ionViewDidEnter(){
-          console.log('Slides did load!');
-     },
      data() {
           return {
                close,
                session: this.$store.getters.getCurrentSession( this.lesson_id, this.session_id),
-               nextActionButtonContent: 'Continue',
+               nextActionButtonContent: '',
+               isNextActionButtonDisabled: false,
+               currentTutorialNumber: 1,
                currentSlideIndex: 0,
+               currentSlidesProgress: 0,
+               showSlides: false,
                slideOpts: {
                     initialSlide: 0,
                     speed: 400,
@@ -62,65 +75,103 @@ export default defineComponent ({
                }
           }
      },
-     // mounted() {
-     //
-     //      this.$nextTick( async () => {
-     //
-     //           // event.update();
-     //           this.$refs.slides.$el.update();
-     //           const length = await this.$refs.slides.$el.length();
-     //           console.log(length);
-     //
-     //      });
-     //
-     // },
+     created() {
+          // Decide which next action button content will be based on number of slides / tutorials
+          this.nextActionButtonContent = this.session.content.length == 1 ? 'Done' : 'Continue';
+     },
+     async mounted() {
+
+          setTimeout( () => {
+               this.showSlides = true;
+          }, 30);
+
+     },
      methods: {
+
+          // Close and exit session modal
           closeSessionModal() {
                return modalController.dismiss();
           },
 
           async nextTutorial() {
 
+               // Disable next tutorial button
+               this.isNextActionButtonDisabled = true;
+
+               // Get the current slides length
+               const slidesLength = await this.$refs.slides.$el.length();
+
+               // Prepapre a message of session is finished and action button titled 'Done'
                if (this.nextActionButtonContent == 'Done') {
 
-                    const alert = await alertController
-                         .create({
-                              header: 'Well Done!',
-                              subHeader: 'You finished this session.',
-                              buttons: [{
-                                   text: 'Continue to learn',
-                                   handler: () => {
-                                        modalController.dismiss();
-                                   }
-                              }]
-                         });
-                    return alert.present();
+                    // Update the current slides progress
+                    this.currentSlidesProgress = 1;
+
+                    setTimeout(async () => {
+
+                         // create an alert to show a completion message
+                         const alert = await alertController
+                              .create({
+                                   header: 'Well Done!',
+                                   subHeader: 'You finished this session.',
+                                   buttons: [{
+                                        text: 'Continue to learn',
+                                        handler: () => {
+                                             modalController.dismiss();
+                                        }
+                                   }]
+                              });
+                         return alert.present();
+
+                    }, 500);
 
                }
 
-               const length = await this.$refs.slides.$el.length();
-               console.log(this.currentSlideIndex);
+               // If slides not completed, continue move to next slide and update the progress
+               if (this.currentSlideIndex < slidesLength && this.nextActionButtonContent != 'Done') {
 
-               if (this.currentSlideIndex < length - 1) {
+                    // Increment current slide index by 1
                     this.currentSlideIndex++;
+
+                    // Move to next slide
                     this.$refs.slides.$el.slideNext();
 
-                    const activeIndex = await this.$refs.slides.$el.getActiveIndex();
+                    this.currentTutorialNumber = await this.$refs.slides.$el.getActiveIndex() + 1;
 
-                    console.log('Current Slide => ' + this.currentSlideIndex);
-                    console.log('Active Slide Index => ' + activeIndex);
-                    console.log('Slides Length => ' + length);
+                    // Update current slides progress
+                    this.currentSlidesProgress = this.currentSlideIndex / slidesLength;
 
-               }
+                    // Scroll the content to top, once user move to next slide next tutorial
+                    setTimeout(() => {
 
-               const isEndSlide = await this.$refs.slides.$el.isEnd();
-               if (isEndSlide) {
-                    console.log('End of slides');
-                    this.nextActionButtonContent = 'Done';
-                    this.currentSlideIndex = 0;
+                         // scroll tutorial content to the top
+                         this.$refs.tutorialContent.$el.scrollToTop();
+
+                         // Enable next tutorial button
+                         this.isNextActionButtonDisabled = false;
+
+                    }, 50);
+
+                    // Check if user reach to the end of slide
+                    const isEndSlide = await this.$refs.slides.$el.isEnd();
+                    if (isEndSlide) {
+                         // Set next action button to 'Done'
+                         this.nextActionButtonContent = 'Done';
+
+                         // Reset current slide Index to 0 (the first slide)
+                         this.currentSlideIndex = 0;
+                    }
+
+
+                    // const activeIndex = await this.$refs.slides.$el.getActiveIndex();
+                    // console.log('Current Slide => ' + this.currentSlideIndex + '\nActive Slide Index => ' + activeIndex + '\nSlides Length => ' + slidesLength);
+
+
                }
 
           }
+
+
      }
 })
 </script>
@@ -142,8 +193,28 @@ ion-footer ion-button {
 ion-slides {
 
 }
+
 ion-slide {
      height: 100%;
      display: block;
+     text-align: left;
+}
+
+ion-header {
+     margin-bottom: 0.3rem;
+}
+
+.tutorial-number {
+     display: inline-block;
+     background: yellow;
+     color: black;
+     min-width: 2rem;
+     padding: 10px;
+     font-weight: 700;
+     position: absolute;
+     top: 61px;
+     right: 0;
+     z-index: 10;
+     box-shadow: -1px 2px 4px 0px grey;
 }
 </style>

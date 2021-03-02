@@ -66,12 +66,19 @@ export default  {
           }
      },
      mounted() {
+
+          // Performing a task (get current lessons from the store) once DOM is updated
           this.$nextTick(() => {
+
+               // Get current lessons from the store and sign local lessons to them
                this.lessons = this.$store.getters.getCurrentLessons;
+
           });
 
      },
      methods: {
+
+          // Open a modal when user tap on a single session
           async openSessionModal(sessionTitle, sessionID, lessonID) {
                const modal = await modalController
                     .create({
@@ -82,8 +89,11 @@ export default  {
                               lesson_id: lessonID
                          }
                     });
+
+               // Present modal to the view
                return modal.present();
           }
+
      }
 }
 </script>

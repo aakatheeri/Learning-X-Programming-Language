@@ -5,29 +5,39 @@ Tutorials App:
 Completed:
 
 - (v 0.1):
-     ☐ App contains 3 Tabs
+     ✔ App contains 3 Tabs @done(2021-02-28 18:55) @project(- \(v 0.1\))
           ✔ Tutorials (group of tutorials devided by categories) @done(2021-02-24 00:32) @project(- \(v 0.1\))
           ✔ Tutorial details view (contains Title, Content, Action button (Continue / Done )) @done(2021-02-24 21:40) @project(- \(v 0.1\))
                ✔ Tutorial Completion Message (Alert, Popup) @done(2021-02-27 01:44) @project(- \(v 0.1\))
 
      ✔ Statistics @done(2021-02-24 00:32) @project(- \(v 0.1\))
-          ☐ Overview of user activities (Number of completed tutorials, Number of competed categories)
+
      ✔ About @done(2021-02-24 00:32) @project(- \(v 0.1\))
           ✔ Some information about the app @done(2021-02-24 00:32) @project(- \(v 0.1\))
 
 - (v 0.2):
      ✔ Link session to static files of tutorials (import them) @done(2021-02-24 18:49) @project(- \(v 0.2\))
           ✔ Tutorials should should be devided by Slides (ion-slides) @done(2021-02-27 03:49) @project(- \(v 0.2\))
-     ☐ Create Continue / Done button
-          ☐ Button action should based on current slide (continue if there is a slide, done if all slides passed)
+     ✔ Create Continue / Done button @done(2021-02-28 11:00) @project(- \(v 0.2\))
+          ✔ Button action should based on current slide (continue if there is a slide, done if all slides passed) @done(2021-02-28 11:00) @project(- \(v 0.2\))
 
 - (v 0.2.1):
-     Create Vuex store that contain all lessons, sessions, tutorials
+     ✔ Add a progress bar on the top of the page (to calculate the current session completion progress) @done(2021-02-28 11:36) @project(- \(v 0.2.1\))
+     ✔ Set content-align to the left @done(2021-02-28 11:41) @project(- \(v 0.2.1\))
+
+- (v 0.2.2):
+     ✔ Create Vuex store that contain all lessons, sessions, tutorials @done(2021-02-28 18:55) @project(- \(v 0.2.2\))
+     ✔ Make the button disabled if user tap on it, if the session is done, disable the button forever otherwise, enable the button @done(2021-03-01 19:53) @project(- \(v 0.2.2\))
 
 - (v 0.3):
-     Create 'Share the app' feature
-     Create Storage for update progress (current lesson, session, tutorial, completed tutorials, completed sessions)
-     Lock uncompleted sessions (through Storage)
+     ✔ Create Storage for update progress (current lesson, session, tutorial, completed tutorials, completed sessions, completed lessons) @done(2021-03-02 21:03) @project(- \(v 0.3\))
+          ✔ Overview of user activities (Number of completed tutorials, Number of competed categories) @done(2021-03-02 21:20) @project(- \(v 0.3\))
+     ✔ Create 'Share the app' feature @done(2021-03-02 21:19) @project(- \(v 0.3\))
+
+
+- (v 0.3.1):
+     ☐ Lock uncompleted sessions (through Storage)
+     ☐ Completion progress enhancement
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Targeted Features:
