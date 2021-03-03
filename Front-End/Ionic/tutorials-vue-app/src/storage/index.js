@@ -20,7 +20,7 @@ const appStorage = {
      },
      keys: async () => {
           const { keys } = await Storage.keys();
-          console.log('Got keys: ', keys);
+          // console.log('Got keys: ', keys);
           return keys;
      },
      clear: async () => {
