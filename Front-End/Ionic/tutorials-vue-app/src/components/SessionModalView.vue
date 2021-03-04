@@ -11,8 +11,10 @@
 
           </ion-toolbar>
 
-          <!-- Progress bar used to let user know the of sessions completion progress -->
-          <ion-progress-bar :value="currentSlidesProgress"></ion-progress-bar>
+          <div class="progress-bar">
+               <!-- Progress bar used to let user know the of sessions completion progress -->
+               <ion-progress-bar :value="currentSlidesProgress"></ion-progress-bar>
+          </div>
 
           <span class="tutorial-number">{{ currentTutorialNumber }}</span>
 
@@ -163,6 +165,7 @@ export default defineComponent ({
                               .create({
                                    header: 'Well Done!',
                                    subHeader: 'You finished this session.',
+                                   backdropDismiss: false,
                                    buttons: [{
                                         text: 'Continue to learn',
                                         handler: () => {
@@ -239,10 +242,6 @@ ion-footer ion-button {
      min-height: 3rem;
 }
 
-ion-slides {
-
-}
-
 ion-slide {
      height: 100%;
      display: block;
@@ -251,19 +250,25 @@ ion-slide {
 
 ion-header {
      margin-bottom: 0.3rem;
+     padding-bottom: 5px;
 }
 
 .tutorial-number {
      display: inline-block;
-     background: yellow;
-     color: black;
+     background: #e3e4d7;
+     color: #4a4444;
      min-width: 2rem;
      padding: 10px;
      font-weight: 700;
      position: absolute;
-     top: 61px;
+     top: 71px;
      right: 0;
      z-index: 10;
-     box-shadow: -1px 2px 4px 0px grey;
+     box-shadow: -1px 1px 2px 0px #545050;
+}
+
+.progress-bar {
+     margin-left: 10px;
+     margin-right: 10px;
 }
 </style>

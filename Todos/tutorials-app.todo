@@ -44,10 +44,10 @@ Completed:
      ✔ Update last completed lesson once session is completed @done(2021-03-04 15:28) @project(- \(v 0.3.2\))
 
 - (v 0.3.4):
-     ☐ Fix bug: Don't allow user to dismiss alert if tap on any space out of alert box
+     ✔ Fix bug: Don't allow user to dismiss alert if tap on any space out of alert box @done(2021-03-04 20:14) @project(- \(v 0.3.4\))
 
 - (v 0.3.4):
-     ☐ Completion progress enhancement
+     ✔ Completion progress enhancement @done(2021-03-04 20:25) @project(- \(v 0.3.4\))
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
 Targeted Features:
