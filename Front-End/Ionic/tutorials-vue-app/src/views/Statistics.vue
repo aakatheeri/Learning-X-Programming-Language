@@ -25,17 +25,10 @@
 
            <ion-card>
                 <ion-item lines="full">
-                     <ion-icon :icon="readerOutline
-" slot="start"></ion-icon>
-                     <ion-label>
-                          {{ completedLessons }} Completed lessons.
-                     </ion-label>
-                </ion-item>
-                <ion-item lines="full">
                      <ion-icon :icon="extensionPuzzleOutline
 " slot="start"></ion-icon>
                      <ion-label>
-                          {{ completedSessions }} Completed sessions.
+                          {{ completedLessons }} Completed lessons.
                      </ion-label>
                 </ion-item>
                 <ion-item lines="full">
@@ -58,7 +51,7 @@
 
 <script>
 import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonItem, IonIcon, IonLabel, IonButton, IonText } from '@ionic/vue';
-import { checkmarkDoneOutline, extensionPuzzleOutline, readerOutline } from 'ionicons/icons';
+import { checkmarkDoneOutline, extensionPuzzleOutline } from 'ionicons/icons';
 import appStorage from '../storage';
 import { Plugins } from '@capacitor/core';
 
@@ -69,20 +62,31 @@ export default  {
           return {
             checkmarkDoneOutline,
             extensionPuzzleOutline,
-            readerOutline,
             completedLessons: null,
-            completedSessions: null,
             completedTutorials: null
           }
      },
-     async mounted() {
+     created() {
 
-          this.completedLessons = await appStorage.getItem('lastLessonCompleted');
-          this.completedSessions = await appStorage.getItem('lastSessionCompleted');
-          this.completedTutorials = await appStorage.getItem('lastSessionCompleted');
+          // Initialize data on view once the view is created
+          this.updateData();
+
+     },
+     ionViewDidEnter() {
+
+          // Update data once view did enter
+          this.updateData();
 
      },
      methods: {
+
+          // Update any data when needed
+          async updateData() {
+
+               this.completedLessons = await appStorage.getItem('lastLessonCompleted');
+               this.completedTutorials = await appStorage.getItem('totalCompletedTutorials');
+
+          },
           async shareInsights() {
 
                const { Share } = Plugins;

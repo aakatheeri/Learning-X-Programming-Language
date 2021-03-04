@@ -49,6 +49,7 @@
 <script>
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonButton, IonButtons, IonSlides, IonSlide, IonFooter, IonProgressBar, modalController, alertController } from '@ionic/vue';
 import {defineComponent } from 'vue';
+import appStorage from '../storage';
 import { close } from 'ionicons/icons';
 
 export default defineComponent ({
@@ -72,15 +73,25 @@ export default defineComponent ({
                     initialSlide: 0,
                     speed: 400,
                     allowTouchMove: false,
-               }
+               },
+               lastLessonCompleted: null,
+               lastSessionCompleted: null
           }
      },
-     created() {
+     async created() {
           // Decide which next action button content will be based on number of slides / tutorials
           this.nextActionButtonContent = this.session.content.length == 1 ? 'Done' : 'Continue';
-     },
-     async mounted() {
 
+          // Get the last completed lesson
+          this.lastLessonCompleted = parseInt( await appStorage.getItem('lastLessonCompleted') );
+
+          // Get the last completed session
+          this.lastSessionCompleted = parseInt( await appStorage.getItem('lastSessionCompleted') );
+
+     },
+     mounted() {
+
+          // Show slides after few milliseconds to avoid any mis-connection with local data
           setTimeout( () => {
                this.showSlides = true;
           }, 30);
@@ -93,6 +104,7 @@ export default defineComponent ({
                return modalController.dismiss();
           },
 
+          // Move to the next tutorial
           async nextTutorial() {
 
                // Disable next tutorial button
@@ -106,6 +118,43 @@ export default defineComponent ({
 
                     // Update the current slides progress
                     this.currentSlidesProgress = 1;
+
+                    // Get the total number of completed tutorials
+                    appStorage.getItem('totalCompletedTutorials').then( (value) => {
+
+                         // Merge current number with completed tutorial on this session
+                         let newCompletedTutorials = (parseInt( value ) + slidesLength ).toString();
+
+                         // Update the total number of completed tutorials
+                         appStorage.setItem('totalCompletedTutorials', newCompletedTutorials);
+
+                    });
+
+                    // Update last completed session
+                    // if ( this.lastLessonCompleted == this.lesson_id - 1 ) {
+
+                         // Check and update the last completed session value
+                         if ( this.lastSessionCompleted == this.session_id - 1) {
+                              appStorage.setItem('lastSessionCompleted', this.session_id);
+                         }
+
+                         // Get this lesson length
+                         const thisLessonLength = this.$store.getters.getLessonLength(this.lesson_id);
+
+                         // Check if this is the last session on the lesson
+                         if ( this.session_id ==  thisLessonLength) {
+
+                              console.log('This is the last lesson');
+
+                              // Reset the number of completed session if lesson is completed
+                              appStorage.setItem('lastSessionCompleted', 0);
+
+                              // Update the last completed lesson value - means the lesson is completed
+                              appStorage.setItem('lastLessonCompleted', this.lesson_id);
+
+                         }
+
+                    // }
 
                     setTimeout(async () => {
 

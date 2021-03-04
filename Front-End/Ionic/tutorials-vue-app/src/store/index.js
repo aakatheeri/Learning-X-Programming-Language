@@ -5,7 +5,7 @@ const store = createStore({
           return {
                lessons: [{
                          id: 1,
-                         title: 'Category 1',
+                         title: 'Lesson 1',
                          sessions: [
                               {
                                    id: 1,
@@ -167,9 +167,104 @@ const store = createStore({
                                         voluptate veniam. Malis iis eiusmod.</p>
                                         `
                                    ]
-                              }
-                         ]
-               }] // end of Lessons
+                              }]
+                    },
+                    {
+                         id: 2,
+                         title: 'Lesson 2',
+                         sessions: [{
+                              id: 1,
+                              title: 'Session One',
+                              description: 'Eram anim enim minim veniam.',
+                              content: [
+                                   `
+                                   <h2>First tut from lesson 2</h2>
+
+                                   <p>Velit minim dolor duis culpa enim anim quid aliqua velit nulla quis fore dolore
+                                   eram legam quid amet esse fugiat quae quorum tamen aliqua fore esse esse illum
+                                   quorum culpa esse nisi noster tempor quis sunt aute elit esse culpa</p>
+
+                                   <p>Minim irure quid aute elit nulla tamen dolore esse elit ipsum sunt export aliqua
+                                   cillum quorum nulla sunt ipsum esse minim fugiat fore cillum aute</p>
+                                   `,
+                                   `
+                                   <h1>2nd tut from lesson 2</h1>
+
+                                   <p>Tamen summis elit quid quid elit noster tempor nulla illum quorum noster magna
+                                   magna enim nulla quae tamen aute culpa</p>
+
+                                   <p>Legam quorum cillum fore quem sunt labore quid veniam multos aliqua noster
+                                   veniam quorum amet quid nulla quis elit dolor esse minim labore</p>
+                                   `
+                              ]
+                         },
+                         {
+                              id: 2,
+                              title: 'Session Two',
+                              description: 'Fugiat cillum duis export aliqua.',
+                              content: [
+                                   `
+                                   <h2>First tut from lesson 2</h2>
+
+                                   <p>Velit minim dolor duis culpa enim anim quid aliqua velit nulla quis fore dolore
+                                   eram legam quid amet esse fugiat quae quorum tamen aliqua fore esse esse illum
+                                   quorum culpa esse nisi noster tempor quis sunt aute elit esse culpa</p>
+
+                                   <p>Minim irure quid aute elit nulla tamen dolore esse elit ipsum sunt export aliqua
+                                   cillum quorum nulla sunt ipsum esse minim fugiat fore cillum aute</p>
+                                   `,
+                              ]
+                         }]
+
+                    },
+                    {
+                         id: 3,
+                         title: 'Lesson 3',
+                         sessions: [{
+                              id: 1,
+                              title: 'Session One',
+                              description: 'Eram anim enim minim veniam.',
+                              content: [
+                                   `
+                                   <h2>First tut from lesson 2</h2>
+
+                                   <p>Velit minim dolor duis culpa enim anim quid aliqua velit nulla quis fore dolore
+                                   eram legam quid amet esse fugiat quae quorum tamen aliqua fore esse esse illum
+                                   quorum culpa esse nisi noster tempor quis sunt aute elit esse culpa</p>
+
+                                   <p>Minim irure quid aute elit nulla tamen dolore esse elit ipsum sunt export aliqua
+                                   cillum quorum nulla sunt ipsum esse minim fugiat fore cillum aute</p>
+                                   `,
+                                   `
+                                   <h1>2nd tut from lesson 2</h1>
+
+                                   <p>Tamen summis elit quid quid elit noster tempor nulla illum quorum noster magna
+                                   magna enim nulla quae tamen aute culpa</p>
+
+                                   <p>Legam quorum cillum fore quem sunt labore quid veniam multos aliqua noster
+                                   veniam quorum amet quid nulla quis elit dolor esse minim labore</p>
+                                   `
+                              ]
+                         },
+                         {
+                              id: 2,
+                              title: 'Session Two',
+                              description: 'Fugiat cillum duis export aliqua.',
+                              content: [
+                                   `
+                                   <h2>First tut from lesson 2</h2>
+
+                                   <p>Velit minim dolor duis culpa enim anim quid aliqua velit nulla quis fore dolore
+                                   eram legam quid amet esse fugiat quae quorum tamen aliqua fore esse esse illum
+                                   quorum culpa esse nisi noster tempor quis sunt aute elit esse culpa</p>
+
+                                   <p>Minim irure quid aute elit nulla tamen dolore esse elit ipsum sunt export aliqua
+                                   cillum quorum nulla sunt ipsum esse minim fugiat fore cillum aute</p>
+                                   `,
+                              ]
+                         }]
+
+                    }] // end of Lessons
 
           }
      },
@@ -182,6 +277,13 @@ const store = createStore({
                return (lesson_id, session_id) => {
                     return state.lessons[lesson_id-1].sessions[session_id-1];
                };
+          },
+          getLessonLength(state) {
+
+               return (lesson_id) => {
+                    return state.lessons[lesson_id-1].sessions.length;
+               }
+
           }
      }
 });

@@ -13,7 +13,7 @@
                :key="lesson.id">
 
                <ion-text color="primary">
-                   <h1 :class="{ lessonLocked: isLessonOpened(lesson.id) }"><strong>{{ lesson.title }}</strong></h1>
+                   <h1 :class="{ lessonLocked: isLessonLocked(lesson.id) }"><strong>{{ lesson.title }}</strong></h1>
                </ion-text>
 
                <br />
@@ -25,7 +25,7 @@
                               :key="session.id"
                               size="6"
                               @click="openSessionModal($event, session.title, session.id, lesson.id)"
-                              :class="{ sessionLocked: isSessionCompleted(lesson.id, session.id) }">
+                              :class="{ sessionLocked: isSessionLocked(lesson.id, session.id) }">
 
                             <h5><strong>{{ session.title }}</strong></h5>
                             <p>{{ session.description }}</p>
@@ -70,34 +70,67 @@ export default  {
                lastSessionCompleted: null
           }
      },
-     mounted() {
+     created() {
 
-          // Performing a task (get current lessons from the store) once DOM is updated
-          this.$nextTick( async () => {
+          // Get current lessons from the store and sign local lessons to them
+          this.lessons = this.$store.getters.getCurrentLessons;
 
-               // Get current lessons from the store and sign local lessons to them
-               this.lessons = this.$store.getters.getCurrentLessons;
+          // Update some data that has been initiated
+          this.updateData();
 
-               // Get the last completed lesson
-               this.lastLessonCompleted = await appStorage.getItem('lastLessonCompleted');
+     },
+     ionViewDidEnter() {
 
-               // Get the last completed session
-               this.lastSessionCompleted = await appStorage.getItem('lastSessionCompleted');
-
-          });
+          // Update data once view did enter
+          this.updateData();
 
      },
      methods: {
 
+          // Update any data when needed
+          async updateData() {
+
+               // Get the last completed lesson
+               this.lastLessonCompleted = parseInt( await appStorage.getItem('lastLessonCompleted') );
+
+               // Get the last completed session
+               this.lastSessionCompleted = parseInt( await appStorage.getItem('lastSessionCompleted') );
+
+          },
+
           // Check if specific session is completed or not
-          isSessionCompleted(lesson_id, session_id) {
+          isSessionLocked(lesson_id, session_id) {
 
-               if ( parseInt(this.lastLessonCompleted) + 1 >= lesson_id ) {
+               // Make sure the last completed lesson is not null and initiated
+               if (this.lastLessonCompleted != null) {
 
-                    if ( parseInt(this.lastSessionCompleted) + 1 >= session_id ) {
-                         return false;
+                    // Check on current opened lesson that need to be completed, which come after last completed lesson
+                    if ( this.lastLessonCompleted + 1 == lesson_id ) {
+
+                         // Unlock previous session based on last completed lesson value if it's greater than or equal selected session
+                         if ( this.lastSessionCompleted + 1 >= session_id ) {
+
+                              return false;
+
+                         // Otherwise unlock next sessions on the same lesson until it's completed
+                         } else {
+                              return true;
+                         }
+
+                    // Check on other next and previus lessons
                     } else {
-                         return true;
+
+                         // Unlock previous lessons based on last completed lesson value if it's greater than or equal to selected lesson
+                         if (this.lastLessonCompleted >= lesson_id) {
+
+                              return false;
+
+                         // Unlock other lessons and sessions - Next lessons and sessions which are not completed
+                         } else {
+
+                              return true;
+                         }
+
                     }
 
                }
@@ -105,10 +138,10 @@ export default  {
           },
 
           // Check if specific lesson is opened or not
-          isLessonOpened(lesson_id) {
+          isLessonLocked(lesson_id) {
 
                // Check if selected lesson is opened to browse based on last lesson completed value
-               if ( parseInt(this.lastLessonCompleted) + 1 >= lesson_id ) {
+               if ( this.lastLessonCompleted + 1 >= lesson_id ) {
                     return false;
                } else {
                     return true;
@@ -131,8 +164,18 @@ export default  {
                               }
                          });
 
+                    modal.onDidDismiss().then(() => {
+
+                         console.log('Modal has been dismissed!');
+
+                         // Update last completed lessons and sessions
+                         this.updateData();
+
+                    });
+
+
                     // Present modal to the view
-                    return modal.present();
+                    modal.present();
 
                }
 

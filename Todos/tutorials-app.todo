@@ -36,8 +36,17 @@ Completed:
 
 
 - (v 0.3.1):
-     ☐ Lock uncompleted sessions (through Storage)
-          Check if with more than one lesson available
+     ✔ Lock uncompleted sessions (through Storage) @done(2021-03-03 19:31) @project(- \(v 0.3.1\))
+          ✔ Check if with more than one lesson available @done(2021-03-03 19:31) @project(- \(v 0.3.1\))
+
+- (v 0.3.2):
+     ✔ Update last completed session once session is completed @done(2021-03-04 15:28) @project(- \(v 0.3.2\))
+     ✔ Update last completed lesson once session is completed @done(2021-03-04 15:28) @project(- \(v 0.3.2\))
+
+- (v 0.3.4):
+     ☐ Fix bug: Don't allow user to dismiss alert if tap on any space out of alert box
+
+- (v 0.3.4):
      ☐ Completion progress enhancement
 
 ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
