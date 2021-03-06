@@ -125,7 +125,7 @@ export default defineComponent ({
                     appStorage.getItem('totalCompletedTutorials').then( (value) => {
 
                          // Merge current number with completed tutorial on this session
-                         let newCompletedTutorials = (parseInt( value ) + slidesLength ).toString();
+                         let newCompletedTutorials = parseInt( value ) + slidesLength;
 
                          // Update the total number of completed tutorials
                          appStorage.setItem('totalCompletedTutorials', newCompletedTutorials);
@@ -213,11 +213,6 @@ export default defineComponent ({
                          // Reset current slide Index to 0 (the first slide)
                          this.currentSlideIndex = 0;
                     }
-
-
-                    // const activeIndex = await this.$refs.slides.$el.getActiveIndex();
-                    // console.log('Current Slide => ' + this.currentSlideIndex + '\nActive Slide Index => ' + activeIndex + '\nSlides Length => ' + slidesLength);
-
 
                }
 

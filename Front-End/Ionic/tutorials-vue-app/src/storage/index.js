@@ -7,7 +7,7 @@ const appStorage = {
      setItem: async (key, value) => {
           await Storage.set({
                key: key,
-               value: value
+               value: (value).toString()
           })
      },
      getItem: async (keyName) => {
@@ -59,9 +59,9 @@ const appStorage = {
                     console.log(isStorageKeysExist);
 
                     // If required keys are not exist, create them by setting their items
-                    appStorage.setItem('lastLessonCompleted', 0);
-                    appStorage.setItem('lastSessionCompleted', 0);
-                    appStorage.setItem('totalCompletedTutorials', 0);
+                    appStorage.setItem('lastLessonCompleted', '0');
+                    appStorage.setItem('lastSessionCompleted', '0');
+                    appStorage.setItem('totalCompletedTutorials', '0');
 
                }
 

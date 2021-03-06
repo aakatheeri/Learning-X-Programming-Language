@@ -1,11 +1,6 @@
 <template>
   <ion-page>
 
-    <!-- <ion-header>
-      <ion-toolbar>
-        <ion-title>Tab 1</ion-title>
-      </ion-toolbar>
-    </ion-header> -->
     <ion-content :fullscreen="true" class="ion-padding">
 
          <div
@@ -25,7 +20,7 @@
                               :key="session.id"
                               size="6"
                               @click="openSessionModal($event, session.title, session.id, lesson.id)"
-                              :class="{ sessionLocked: isSessionLocked(lesson.id, session.id) }">
+                              :class="{ sessionLocked: isSessionLocked(lesson.id, session.id), sessionOpened: isSessionAvailableImmediately(lesson.id, session.id) }">
 
                             <h5><strong>{{ session.title }}</strong></h5>
                             <p>{{ session.description }}</p>
@@ -72,6 +67,8 @@ export default  {
      },
      created() {
 
+          console.log('Component has been created!');
+
           // Get current lessons from the store and sign local lessons to them
           this.lessons = this.$store.getters.getCurrentLessons;
 
@@ -81,8 +78,13 @@ export default  {
      },
      ionViewDidEnter() {
 
+          console.log('Ion view did enter!');
+
           // Update data once view did enter
           this.updateData();
+
+          // Remove openedSession class
+          this.removeHighlightedClassFromOpenedSession();
 
      },
      methods: {
@@ -98,7 +100,38 @@ export default  {
 
           },
 
+          // To remove 'openedSession' from available session immediately to the user
+          removeHighlightedClassFromOpenedSession() {
+               setTimeout(() => {
+                    console.log('Fire!');
+                    document.getElementsByClassName('sessionOpened')[0].classList.remove('sessionOpened');
+               }, 1000);
+          },
+
           // Check if specific session is completed or not
+
+          isSessionAvailableImmediately(lesson_id, session_id) {
+
+               // Make sure the last completed lesson is not null and initiated
+               if (this.lastLessonCompleted != null) {
+
+                    // Check on current opened lesson that need to be completed, which come after last completed lesson
+                    if ( this.lastLessonCompleted + 1 == lesson_id ) {
+
+                         // Unlock next session based on last completed lesson value if it's greater than or equal selected session
+                         if ( this.lastSessionCompleted + 1 == session_id ) {
+                              return true;
+                         } else {
+                              return false;
+                         }
+
+                    } else {
+                         return false;
+                    }
+
+               }
+
+          },
           isSessionLocked(lesson_id, session_id) {
 
                // Make sure the last completed lesson is not null and initiated
@@ -109,10 +142,9 @@ export default  {
 
                          // Unlock previous session based on last completed lesson value if it's greater than or equal selected session
                          if ( this.lastSessionCompleted + 1 >= session_id ) {
-
                               return false;
 
-                         // Otherwise unlock next sessions on the same lesson until it's completed
+                         // Otherwise unlock next session on the same lesson until it's completed
                          } else {
                               return true;
                          }
@@ -122,12 +154,10 @@ export default  {
 
                          // Unlock previous lessons based on last completed lesson value if it's greater than or equal to selected lesson
                          if (this.lastLessonCompleted >= lesson_id) {
-
                               return false;
 
                          // Unlock other lessons and sessions - Next lessons and sessions which are not completed
                          } else {
-
                               return true;
                          }
 
@@ -171,6 +201,9 @@ export default  {
                          // Update last completed lessons and sessions
                          this.updateData();
 
+                         // Remove openedSession class
+                         this.removeHighlightedClassFromOpenedSession();
+
                     });
 
 
@@ -186,6 +219,7 @@ export default  {
 </script>
 
 <style scoped>
+
 .grid-box {
      padding: 0;
      border: 1px solid #cdc5e0;
@@ -205,8 +239,24 @@ h1.lessonLocked {
      color: grey;
 }
 
+ion-col {
+     -webkit-transition: color 0.5s ease-out;
+     -moz-transition: color 0.5s ease-out;
+     -o-transition: color 0.5s ease-out;
+     transition: color 0.5s ease-out;
+
+     -webkit-transition: background-color 0.5s ease-out;
+     -moz-transition: background-color 0.5s ease-out;
+     -o-transition: background-color 0.5s ease-out;
+     transition: background-color 0.5s ease-out;
+}
 ion-col.sessionLocked {
      color: grey;
+}
+
+ion-col.sessionOpened {
+     color: black;
+     background-color: #fdff91;
 }
 
 </style>
