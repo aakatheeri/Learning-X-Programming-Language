@@ -91,7 +91,7 @@ console.log('Hello world'.substring(0, 5));
 
 /*
      Variables are declared with the 'var' keyword. Javascript is dynamically
-
+*/
 
 
 var someVar = 5;
@@ -109,3 +109,8 @@ someVar *= 10;
 // and an eve-shorter-hand for addinhg or subtracting 1
 someVar++;
 someVar--;
+
+// Setting default values of variable
+let otherName = '';
+var name = otherName || 'default';
+console.log(name);
