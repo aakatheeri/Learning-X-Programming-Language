@@ -1,0 +1,19 @@
+
+.root {
+     width: 80%;
+     margin: 0 auto;
+
+     ul {
+          background-color: #ececec;
+          border: 1px solid #c7c2c2;
+          padding: 0;
+          li {
+              list-style: none;
+              padding: 10px 0;
+               border-bottom: 1px solid #c7c2c2;
+          }
+          li:last-child {
+               border: 0 none;
+          }
+     }
+}
