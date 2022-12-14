@@ -3,6 +3,7 @@ import time
 from termcolor import colored
 
 class Canvas:
+
     def __init__(self, width, height):
         self._x = width
         self._y = height
@@ -57,7 +58,7 @@ class TerminalScribe:
         self.canvas.print()
         time.sleep(self.framerate)
 
-canvas = Canvas(50, 50)
+canvas = Canvas(30, 30)
 scribe = TerminalScribe(canvas)
 
 scribe.right()
