@@ -1,7 +1,0 @@
-{
-  "name": "travel-story-ionic-vue-app",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "vue"
-}

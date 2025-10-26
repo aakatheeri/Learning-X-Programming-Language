@@ -1,7 +1,0 @@
-{
-  "name": "simple-modal-app",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "vue"
-}
